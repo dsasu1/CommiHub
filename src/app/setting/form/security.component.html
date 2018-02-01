@@ -1,0 +1,51 @@
+<div class="ui-block">
+  <div class="ui-block-title">
+    <h6 class="title">{{'SecurityQuestion' | translate}}</h6>
+  </div>
+  <div class="ui-block-content">
+    <form #changeSecurityQuesform="ngForm" (ngSubmit)="onSubmitQuestion(changeSecurityQuesform)" ngNativeValidate>
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div class="form-group">
+            <app-errormessage [appMsg]="securityMsg"></app-errormessage>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+          <div class="form-group">
+            <label class="control-label">{{'Question' | translate}}</label>
+            <select class="select-2" name="securityQuestionId" [(ngModel)]="user.securityQuestionId" required>
+              <option *ngFor="let secQues of  secQuestions"  [ngValue]="secQues.id">{{secQues.question}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+          <div class="form-group ">
+            <label class="control-label">{{'Answer' | translate}}</label>
+            <input class="form-control" placeholder="{{'EnterAnswer' | translate}}" pInputText name="securityAnswer" type="text" [(ngModel)]="user.userSecurityAns" required  [attr.maxlength]="siteConstant.TextMaxLength" >
+          </div>
+        </div>
+
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div class="form-group">
+            <label class="control-label">{{'CurrentPassword' | translate}}</label>
+            <input class="form-control" placeholder="{{'EnterPassword' | translate}}" type="password" pInputText name="password" [(ngModel)]="user.password" required  [attr.maxlength]="siteConstant.PasswordMaxLength"  >
+          </div>
+        </div>
+
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+              <button class="btn btn-secondary btn-lg full-width" type="button" (click)="onCancel()">{{'Cancel' | translate}}</button>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+
+              <button type="submit" class="btn btn-blue btn-lg full-width">{{'Save' | translate}} <app-progressbar [isSpinner]="true" *ngIf="isSubmitted"></app-progressbar></button>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </form>
+  </div>
+</div>

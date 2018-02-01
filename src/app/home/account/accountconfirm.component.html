@@ -1,0 +1,24 @@
+<app-progressbar *ngIf="!isDoneLoading"></app-progressbar>
+<div class="container" *ngIf="isDoneLoading">
+    <div class="row">
+      <div class="col-xl-9  col-lg-9 col-md-12 col-sm-12 col-xs-12">
+        <div class="ui-block">
+          <div class="ui-block-title">
+            <h4 class="title">{{header}}</h4>
+          </div>
+          <div class="ui-block-content">
+            <div class="row">
+              <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                {{'AccountConfirmMessage' | translate}}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                 <a routerLink="" class="btn btn-blue">{{'LogIn' |translate}}</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>

@@ -1,0 +1,58 @@
+<div class="ui-block text-center" *ngIf="currentdata.length < 1">
+  <h5>{{'NoPropertiestodisplay' | translate}}</h5>
+</div>
+
+<div class="row">
+  <div *ngFor="let prop of currentdata; let i = index  trackBy : trackingBy" class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-xs-6">
+    <div class="ui-block">
+      <div class="friend-item">
+        <div class="friend-header-thumb">
+          <img [src]="GetImageUrl(prop)"  alt="friend">
+        </div>
+
+        <div class="friend-item-content">
+          <div class="more" *ngIf="userSession.isManager && !isTenant">
+            <i class="fa  fa-ellipsis-h"></i>
+            <ul class="more-dropdown" >
+              <li >
+                <a style="cursor:pointer;"  PSSweetAlert (onConfirm)="ondeleteProperty(i)">{{'Delete' | translate}}</a>
+              </li>
+
+            </ul>
+          </div>
+          <div class="friend-avatar">
+            <div class="author-thumb">
+              <div class="country">{{prop.propType}}</div>
+            </div>
+            <div class="author-content">
+              <h5 class="author-name">{{prop.propName}}</h5>
+              <div class="country">{{prop.zipCode.city}}, {{prop.zipCode.province}} {{prop.zipCode.countryCode}}</div>
+              <div class="country"><h3><kbd>{{prop.propCode}}</kbd></h3></div>
+            </div>
+          </div>
+
+          <div class="swiper-container" data-slide="fade">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+
+                <div class="control-block-button">
+                  <a *ngIf="!isTenant" [routerLink]="['/manageproperty', prop.id]" class="btn bg-blue">
+                    {{'Manage' | translate}}
+                  </a>
+                  <a *ngIf="isTenant" [routerLink]="['/managehome', prop.id]" class="btn bg-blue">
+                    {{'Manage' | translate}}
+                  </a>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<app-pager *ngIf="availabledata" [dataList]="availabledata" (onPaged)="currentdata = $event"></app-pager>

@@ -1,0 +1,17 @@
+<div class="ui-block">
+  <div class="ui-block-title">
+    <h6 class="title">{{'Filter' | translate}}</h6>
+
+  </div>
+
+
+  <div class="col-12">
+    <div class="form-group">
+      <input type="text" class="form-control" [(ngModel)]="filterValue" placeholder="{{'UnitBuilding' | translate}}" />
+    </div>
+    <div class="form-group">
+      <button type="button" (click)="clearFilter()" [disabled]="!isFilterMode" class="btn  btn-secondary">{{'Reset' | translate}}</button> <button type="button" (click)="filterResult()" [disabled]="filterValue == null || filterValue == ''" class="btn   btn-blue">{{'Filter' | translate}}</button>
+    </div>
+  </div>
+
+</div>

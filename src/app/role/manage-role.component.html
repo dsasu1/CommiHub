@@ -1,0 +1,55 @@
+<div class="container">
+  <div class="row">
+
+    <div class="col-xl-3  col-lg-3 col-md-12 col-sm-12 col-xs-12 ">
+      <div class="ui-block">
+        <div class="your-profile">
+          <div class="ui-block-title ui-block-title-small">
+            <h6 class="title">{{'ManageRole' | translate}}</h6>
+          </div>
+
+          <div id="accordion" role="tablist" aria-multiselectable="true">
+            <div class="card">
+              <div class="card-header" role="tab" id="headingOne">
+                <h6 class="mb-0">
+                  <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    {{role?.title}}
+                    <i class="olymp-dropdown-arrow-icon fa fa-angle-down"></i>
+                  </a>
+                </h6>
+              </div>
+
+              <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
+                <ul class="your-profile-menu">
+                  <li>
+                    <a [routerLink]="['/managerole', role?.id, {outlets: {'section': ['editInfo']}}]" routerLinkActive="linkActive" >{{'RoleInfo' | translate}}</a>
+                  </li>
+                  <li>
+                    <a  [routerLink]="['/managerole', role?.id, {outlets: {'section': ['staffs']}}]" routerLinkActive="linkActive">{{'Staffs' | translate}}</a>
+                  </li>
+                  <li>
+                    <a  [routerLink]="['/managerole', role?.id, {outlets: {'section': ['properties']}}]" routerLinkActive="linkActive">{{'Properties' | translate}}</a>
+                  </li>
+                  <!--<li>
+                    <a (click)="menuClick('pages')" style="cursor:pointer;">{{'Pages' | translate}}</a>
+                  </li>
+                  <li>
+                    <a (click)="menuClick('notifications')" style="cursor:pointer;">{{'NotificationRules' | translate}}</a>
+                  </li>-->
+                </ul>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xl-9  col-lg-9 col-md-12 col-sm-12 col-xs-12">
+      <router-outlet name="section"></router-outlet>
+    </div>
+
+
+  </div>
+</div>

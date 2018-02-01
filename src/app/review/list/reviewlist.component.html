@@ -1,0 +1,92 @@
+<div class="ui-block text-center" *ngIf="currentReviews.length < 1">
+  <h5>{{'NoDataToDisplay' | translate}}</h5>
+</div>
+
+<div *ngFor="let rev of currentReviews; let i = index;  trackBy : trackingBy">
+
+  <div class="ui-block">
+    <article class="hentry post">
+
+      <div class="post__author author vcard inline-items">
+
+        <div class="author-date">
+          <h6 class="h6 post__author-name fn" >{{rev.userName}} </h6>
+          <div class="post__date">
+            <time class="published">
+              {{rev.addedDateUtc | PSDateTransform }}
+            </time>
+          </div>
+        </div>
+        <!--<div class="more">
+          <i class="fa fa-ellipsis-h"></i>
+          <ul class="more-dropdown">
+            <li>
+              <a href="#">Edit Post</a>
+            </li>
+
+          </ul>
+        </div>-->
+
+
+      </div>
+      <div class="row pb-2">
+        <div class="col-lg-6">
+          <h5 class="first">{{'Overall' | translate}}</h5>
+          <p-rating name="overallRating_{i}" [(ngModel)]="rev.overallRating" [cancel]="false" readonly="true" iconOnClass="fa-star bg-warning specialbtn" iconOffClass="fa-star specialbtn bg-grey"></p-rating>
+        </div>
+      </div>
+      <h4>{{rev.title}}</h4>
+      <p>
+        {{rev.details}}
+      </p>
+
+      <div class="post-additional-info">
+
+        <div class="row">
+          <div class="col-lg-4">
+            <h5 class="first">{{'Staff' | translate}}</h5>
+            <p-rating name="staffRating_{i}" [(ngModel)]="rev.staffRating" [cancel]="false" readonly="true"  iconOnClass="fa-star bg-warning specialbtn" iconOffClass="fa-star specialbtn bg-grey"></p-rating>
+          </div>
+          <div class="col-lg-4">
+            <h5 class="first">{{'Maintenance' | translate}}</h5>
+            <p-rating name="maintenanceRating_{i}" [(ngModel)]="rev.maintenanceRating" [cancel]="false" readonly="true" iconOnClass="fa-star bg-warning specialbtn" iconOffClass="fa-star specialbtn bg-grey"></p-rating>
+          </div>
+          <div class="col-lg-4">
+            <h5 class="first">{{'Safety' | translate}}</h5>
+            <p-rating name="safetyRating_{i}" [(ngModel)]="rev.safetyRating" [cancel]="false" readonly="true" iconOnClass="fa-star bg-warning specialbtn" iconOffClass="fa-star specialbtn bg-grey"></p-rating>
+          </div>
+        </div>
+        <div class="row pt-2">
+          <div class="col-lg-4">
+            <h5 class="first">{{'Neighborhood' | translate}}</h5>
+            <p-rating name="neighborRating_{i}" [(ngModel)]="rev.neighborRating" [cancel]="false" readonly="true" iconOnClass="fa-star bg-warning specialbtn" iconOffClass="fa-star specialbtn bg-grey"></p-rating>
+          </div>
+          <div class="col-lg-4">
+            <h5 class="first">{{'Grounds' | translate}}</h5>
+            <p-rating name="groundsRating_{i}" [(ngModel)]="rev.groundsRating" [cancel]="false" readonly="true" iconOnClass="fa-star bg-warning specialbtn" iconOffClass="fa-star specialbtn bg-grey"></p-rating>
+          </div>
+          <div class="col-lg-4">
+            <h5 class="first">{{'Noise' | translate}}</h5>
+            <p-rating name="noiseRating_{i}" [(ngModel)]="rev.noiseRating" [cancel]="false" readonly="true" iconOnClass="fa-star bg-warning specialbtn" iconOffClass="fa-star specialbtn bg-grey"></p-rating>
+          </div>
+        </div>
+        <div class="row pt-4">
+          <!--<div class="col-lg-12">
+            {{'Howwasthisreview' | translate}} <a class="btn btn-secondary btn-sm" (click)="onHelpfulClick(i)" style="cursor: pointer; color: white;">{{'Useful' | translate}} <i class="fa fa-thumbs-up"></i> {{rev.helpful}}</a>
+          </div>-->
+        
+        </div>
+     
+
+      </div>
+
+    </article>
+
+
+  </div>
+
+</div>
+
+
+<app-pager *ngIf="availableReviews" [dataList]="availableReviews" (onPaged)="currentReviews = $event"></app-pager>
+

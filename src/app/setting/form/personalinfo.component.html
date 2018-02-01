@@ -1,0 +1,104 @@
+<div class="ui-block">
+  <div class="ui-block-title">
+    <h6 class="title">{{'Basics' | translate}}</h6>
+  </div>
+
+  <div class="ui-block-content">
+    <form #basicform="ngForm" (ngSubmit)="onSubmitSaveBasic(basicform)" ngNativeValidate>
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div class="form-group">
+            <app-errormessage [appMsg]="personalInfoMsg"></app-errormessage>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+
+          <div class="form-group ">
+            <label class="control-label">{{'UserType' | translate}}</label>
+            <h5>{{currentUser.userTypeTitle}}</h5>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+          <div class="form-group ">
+            <label class="control-label">{{'AccountCode' | translate}}</label>
+            <h5>{{user.serviceCode}}</h5>
+          </div>
+        </div>
+
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+          <div class="form-group ">
+            <label class="control-label">{{ firstNameLabel | translate}}</label>
+            <input class="form-control" name="firstName" placeholder="{{ firstNameEnterLabel | translate}}" pInputText type="text" [(ngModel)]="user.firstName" required [attr.maxlength]="siteConstant.FirstNameMaxLength">
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" [hidden]="isHideLastName">
+          <div class="form-group">
+            <label class="control-label">{{'LastName' | translate}}</label>
+            <input class="form-control" name="lastName" placeholder="{{ 'EnterLastName' | translate}}" pInputText type="text" [(ngModel)]="user.lastName" [required]="!isHideLastName" [attr.maxlength]="siteConstant.LastNameMaxLength">
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+          <div class="form-group">
+            <label class="control-label">{{'Email' | translate}}</label>
+            <input class="form-control" placeholder="{{ 'EnterEmail' | translate}}" name="email" pInputText type="email" [(ngModel)]="user.email" [attr.maxlength]="siteConstant.EmailMaxLength" required>
+          </div>
+
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+          <div class="form-group">
+            <label class="control-label">{{'Username' | translate}}</label>
+            <input class="form-control" placeholder="{{ 'EnterUserName' | translate}}" name="userName" pInputText type="text" [(ngModel)]="user.userName" [attr.maxlength]="siteConstant.FirstNameMaxLength" required>
+          </div>
+
+        </div>
+
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+          <div class="form-group">
+            <label class="control-label">{{'SiteLanguage' | translate}}</label>
+            <select class="select-2" [(ngModel)]="user.lang" name="lang">
+              <option *ngFor="let uiLanguage of getLanguages()" [ngValue]="uiLanguage.lang">{{uiLanguage.displayName}}</option>
+            </select>
+          </div>
+        </div>
+
+
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+              <button class="btn btn-secondary btn-lg full-width" type="button" (click)="onCancel()">{{'Cancel' | translate}}</button>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+
+              <button type="submit" class="btn btn-blue btn-lg full-width">{{'Save' | translate}} <app-progressbar [isSpinner]="true" *ngIf="isSubmitted"></app-progressbar></button>
+            </div>
+          </div>
+
+        </div>
+
+
+      </div>
+    </form>
+  </div>
+  <div class="ui-block-content">
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="form-group">
+
+        </div>
+        <div class="form-group">
+          <label>{{'Profileimage' | translate}}</label>
+          <app-upload-form [uploadOptions]="upOtions" (onFinishedUpload)="onUploadFinished($event)"></app-upload-form>
+        </div>
+      </div>
+
+      <div class="col-lg-6">
+        <div class="author-thumb">
+          <img [src]="GetImageUrl()" alt="friend" style="max-height: 96px;" class="avatar">
+    
+        </div>
+        
+      </div>
+    </div>
+  
+  </div>
+</div>

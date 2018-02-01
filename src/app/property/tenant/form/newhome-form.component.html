@@ -1,0 +1,51 @@
+<div class="row">
+  <div class="col-lg-12">
+    <button class="btn btn-success" [hidden]="isOpenForm" type="button" (click)="openForm(true)"><i class="fa fa-plus"></i> {{"AddNew" | translate}}</button>
+  </div>
+</div>
+
+<form *ngIf="isOpenForm" #homeForm="ngForm" (ngSubmit)="saveHome(homeForm)" ngNativeValidate>
+  <div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <div class="form-group">
+        <app-errormessage [appMsg]="InfoMsg"></app-errormessage>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+      <div class="form-group">
+        <label class="control-label" for="accountCode">{{'PropertyCode' | translate}}</label> {{'Colon' | translate}}
+        <input type="text" pInputText class="form-control" id="propertyCode" placeholder="{{'EnterPropertyCode' | translate}}" name="propertyCode" [(ngModel)]="unitForm.propertyCode" required [attr.maxlength]="siteConstant.Max100Length" />
+      </div>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+      <div class="form-group">
+        <label class="control-label" for="title">{{'UnitBuilding' | translate}}</label> :
+        <input type="text" pInputText class="form-control" id="unitAddress" placeholder="{{'EnterUnitBuilding' | translate}}" [(ngModel)]="unitForm.unitAddress" name="unitaddress" required [attr.maxlength]="siteConstant.Max100Length" />
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+      <div class="form-group">
+        <label class="control-label" for="title">{{'Title' | translate}}</label> :
+        <input type="text" pInputText class="form-control" id="unitName" placeholder="{{'GiveItAName' | translate}}" name="unitName" [(ngModel)]="unitForm.unitName"  required [attr.maxlength]="siteConstant.Max100Length" />
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+          <button class="btn btn-secondary btn-lg full-width" type="button" (click)="openForm(false)">{{'Cancel' | translate}}</button>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+          <button class="btn btn-blue btn-lg full-width" [disabled]="!homeForm.form.valid" type="submit">{{'Save' | translate}} <app-progressbar [isSpinner]="true" *ngIf="isSubmitted"></app-progressbar></button>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</form>

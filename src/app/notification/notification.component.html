@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xl-3 col-lg-3  col-md-12 col-sm-12 col-xs-12">
+      <div class="ui-block">
+        <div class="your-profile">
+
+
+
+          <div class="ui-block-title">
+            <a (click)="filerByType('All')" style="cursor:pointer;" class="h6 title">{{'General' | translate}}</a>
+            <i  [hidden]="allCount < 1" class="items-round-little bg-primary">{{allCount}}</i>
+          </div>
+          <div class="ui-block-title">
+            <a (click)="filerByType('ServiceRequest')" style="cursor:pointer;" class="h6 title">{{'ServiceRequests' | translate}}</a>
+            <i [hidden]="srCount < 1" class="items-round-little bg-blue">{{srCount}}</i>
+          </div>
+          <div class="ui-block-title">
+            <a (click)="filerByType('Residents')" style="cursor:pointer;" class="h6 title">{{'Residents' | translate}}</a>
+            <i [hidden]="resCount < 1" class="items-round-little bg-blue">{{resCount}}</i>
+          </div>
+          <div class="ui-block-title">
+            <i (click)="filerByType('Review')" style="cursor:pointer;" class="h6 title">{{'Reviews' | translate}}</i>
+            <i [hidden]="rvCount < 1" class="items-round-little bg-blue">{{rvCount}}</i>
+          </div>
+          <div class="ui-block-title">
+            <a (click)="filerByType('CommentCard')" style="cursor:pointer;" class="h6 title">{{'CommentCard' | translate}}</a>
+            <i [hidden]="cmCount < 1" class="items-round-little bg-blue">{{cmCount}}</i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-9 col-lg-9  col-md-12 col-sm-12 col-xs-12">
+      <div class="ui-block">
+        <div class="ui-block-title">
+          <h6 class="title">{{'Notifications' | translate}}</h6>
+        </div>
+
+         <app-notificationlist [isMainPage]="true"></app-notificationlist>
+      </div>
+
+    </div>
+
+ 
+  </div>
+</div>

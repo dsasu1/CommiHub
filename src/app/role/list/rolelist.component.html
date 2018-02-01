@@ -1,0 +1,54 @@
+<div class="ui-block text-center" *ngIf="currentdata.length < 1">
+  <h5>{{'NoDataToDisplay' | translate}}</h5>
+</div>
+
+<div class="row">
+  <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-xs-6" *ngFor="let itemData of currentdata; let i = index; trackBy : trackingBy">
+    <div class="ui-block">
+      <div class="friend-item">
+        
+
+        <div class="friend-item-content">
+          <div class="more">
+            <i class="fa  fa-ellipsis-h"></i>
+            <ul class="more-dropdown">
+              <li>
+                <a style="cursor:pointer;"  PSSweetAlert (onConfirm)="ondeleteRole(i)">{{'Delete' | translate}}</a>
+              </li>
+
+            </ul>
+          </div>
+          <div class="friend-avatar">
+            <div class="author-thumb">
+
+            </div>
+            <div class="author-content">
+              <h5 class="author-name">{{itemData.title}}</h5>
+              <div class="country">{{itemData.roleDesc}}</div>
+              <div class="country" *ngIf="itemData.hasManagementRights"><i class="fa fa-check text-success"></i>{{'HasManagementRights' | translate}}</div>
+              <div class="country"><i [ngClass]="{'fa':true, 'fa-check text-success': itemData.isValid, 'fa-close text-danger' : !itemData.isValid}"></i> {{'Valid' | translate}}</div>
+            </div>
+          </div>
+
+          <div class="swiper-container" data-slide="fade">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+
+                <div class="control-block-button">
+                  <a [routerLink]="['/managerole', itemData.id]"  class="btn bg-blue">
+                    {{'Manage' | translate}}
+                  </a>
+
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+ </div>
+
+<app-pager *ngIf="availabledata" [dataList]="availabledata" (onPaged)="currentdata = $event"></app-pager>
