@@ -1,0 +1,129 @@
+<!-- Header -->
+
+<header class="header" id="site-header">
+
+  <div class="page-title">
+    <h6>{{title | translate}}</h6>
+  </div>
+
+  <div class="header-content-wrapper">
+    <!--<form class="search-bar w-search notification-list friend-requests">
+      <div class="form-group with-button">
+        <input class="form-control" placeholder="{{ 'SearchProperty' | translate}}" type="search">
+        <button>
+          <i class="fa fa-2x fa-search"></i>
+        </button>
+      </div>
+    </form>
+
+    <a href="#" class="link-find-friend">{{'Search' | translate}}</a>-->
+
+    <div class="control-block">
+      <app-errormessage [appMsg]="headerInfoMessage"></app-errormessage>
+      <div class="control-icon more has-items" *ngIf="isLoggedIn">
+        <i [ngClass]="{'fa fa-2x fa-bell': true, 'orangeColor': unseenNotificationCount > 0}"></i>
+
+        <div class="label-avatar bg-primary" [hidden]="unseenNotificationCount < 1">{{unseenNotificationCount}}</div>
+
+        <div class="more-dropdown more-with-triangle triangle-top-center">
+
+
+          <div class="mCustomScrollbar" data-mcs-theme="dark">
+            <app-notificationlist></app-notificationlist>
+          </div>
+
+          <a routerLink="/notification" class="view-all bg-primary">{{'ViewAll' | translate}}</a>
+        </div>
+      </div>
+
+      <div class="author-page author vcard inline-items more" *ngIf="isLoggedIn">
+        <div class="author-thumb">
+          <img alt="author" [src]="GetImageUrl()" onerror="this.src = '../../../assets/img/avatar1.jpg'" style="max-height:36px;" class="avatar">
+          <span class="icon-status online"></span>
+          <div class="more-dropdown more-with-triangle">
+            <div class="mCustomScrollbar" data-mcs-theme="dark">
+
+              <app-globalmenu></app-globalmenu>
+            </div>
+
+          </div>
+        </div>
+        <a href="#" class="author-name fn">
+          <div class="author-title">
+            {{currentUser?.userVM?.firstName}} <i class="fa fa-angle-down"></i>
+          </div>
+        </a>
+      </div>
+      <div class="author-page author vcard inline-items more" *ngIf="!isLoggedIn">
+        <div class="author-thumb">
+          <i class="fa fa-2x fa-user"></i>
+          <div class="more-dropdown more-with-triangle">
+            <div class="mCustomScrollbar" data-mcs-theme="dark">
+
+              <app-globalmenu></app-globalmenu>
+            </div>
+
+          </div>
+        </div>
+        <a class="author-name fn">
+          <div class="author-title">
+            {{'Guest' | translate}} <i class="fa fa-angle-down"></i>
+          </div>
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+</header>
+
+<!-- ... end Header -->
+<!-- Responsive Header -->
+
+<header class="header header-responsive" id="site-header-responsive">
+
+  <div class="header-content-wrapper">
+    <ul class="nav nav-tabs mobile-app-tabs" role="tablist">
+    
+      <li class="nav-item" *ngIf="isLoggedIn">
+        <a class="nav-link"  routerLink="/notification" >
+          <div class="control-icon has-items">
+            <i class="fa fa-2x fa-bell"></i>
+            <div class="label-avatar bg-primary">8</div>
+          </div>
+        </a>
+      </li>
+
+      <!--<li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#search" role="tab">
+          <svg class="olymp-magnifying-glass-icon"><use xlink:href="../../../assets/icons/icons.svg#olymp-magnifying-glass-icon"></use></svg>
+          <svg class="olymp-close-icon"><use xlink:href="../../../assets/icons/icons.svg#olymp-close-icon"></use></svg>
+        </a>
+      </li>-->
+    </ul>
+  </div>
+
+  <!-- Tab panes -->
+  <div class="tab-content tab-content-responsive">
+
+    <!--<div class="tab-pane " id="search" role="tabpanel">
+
+
+      <form class="search-bar w-search notification-list friend-requests">
+        <div class="form-group with-button">
+          <input class="form-control" placeholder="{{ 'SearchProperty' | translate}}" type="text">
+        </div>
+      </form>
+
+
+    </div>-->
+
+  </div>
+  <!-- ... end  Tab panes -->
+
+</header>
+
+<!-- ... end Responsive Header -->
+
+<div class="header-spacer"></div>
+

@@ -1,0 +1,44 @@
+<div class="ui-block">
+  <div class="ui-block-title">
+    <h6 class="title">{{'Properties' | translate}}</h6>
+  </div>
+  <div class="ui-block-content">
+    <div class="row" *ngIf="dropDownData?.length > 0">
+      <div class="col-lg-12">
+        <button class="btn btn-success" [hidden]="isOpenForm" type="button" (click)="openForm(true)"><i class="fa fa-plus"></i> {{"AddNew" | translate}}</button>
+      </div>
+      <div class="col-lg-12">
+        <form [hidden]="!isOpenForm" #dataForm="ngForm" (ngSubmit)="onSubmitForm(dataForm)" ngNativeValidate>
+          <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <div class="form-group">
+                <app-errormessage [appMsg]="InfoMsg"></app-errormessage>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+              <div class="form-group">
+                <label class="control-label" for="serviceCodeValues">{{'Properties' | translate}}</label>
+                <p-multiSelect defaultLabel="{{dropDownLabel}}" [options]="dropDownData" name="propertyInfos" [style]="{minWidth:'100%'}" [panelStyle]="{minWidth:'100%'}" optionLabel="propName" [(ngModel)]="propForm.propertyInfos"></p-multiSelect>
+
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+              <div class="form-group pt-lg-4  pt-md-4">
+                <button type="button" class="btn btn-secondary" (click)="openForm(false)" style="margin-top:3px;">{{'Cancel' | translate}}</button> <button type="submit" class="btn btn-blue" style="margin-top:3px;">{{'Save' | translate}} <app-progressbar [isSpinner]="true" *ngIf="isSubmitted"></app-progressbar></button>
+              </div>
+            </div>
+
+
+          </div>
+
+        </form>
+      </div>
+
+    </div>
+
+    <app-propertylists *ngIf="role" [roleId]="role?.id"></app-propertylists>
+
+  </div>
+</div>

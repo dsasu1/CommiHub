@@ -1,0 +1,59 @@
+<div class="row" [hidden]="isManage">
+  <div class="col-lg-12">
+    <button class="btn btn-success" [hidden]="isOpenForm" type="button" (click)="openForm(true)"><i class="fa fa-plus"></i> {{"AddNew" | translate}}</button>
+  </div>
+</div>
+
+
+<form [hidden]="!isOpenForm" #rForm="ngForm" (ngSubmit)="saveAvailableRole(rForm)" ngNativeValidate>
+  <div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <div class="form-group">
+        <app-errormessage [appMsg]="InfoMsg"></app-errormessage>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <div class="form-group">
+        <label class="control-label" for="title">{{'RoleName' | translate}}</label>
+        <input type="text" pInputText class="form-control" id="title" placeholder="{{'EnterRoleName' | translate}}" name="title" [(ngModel)]="role.title" [attr.maxlength]="siteConstant.Max100Length" required />
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <div class="form-group">
+        <label class="control-label" for="roleDesc">{{'Description' | translate}}</label>
+        <input type="text" pInputText class="form-control" id="roleDesc" placeholder="{{'EnterDescription' | translate}}" name="roleDesc" [(ngModel)]="role.roleDesc" [attr.maxlength]="siteConstant.Max100Length" />
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+      <div class="form-group">
+        <label class="control-label" for="hasManagementRights">{{'GiveAccessToManagement' | translate}}</label> <br />
+        <p-toggleButton name="hasManagementRights" inputId="hasManagementRights" onLabel="{{'Yes' | translate}}" offLabel="{{'No' | translate}}" [(ngModel)]="role.hasManagementRights"></p-toggleButton>
+      </div>
+    </div>
+     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+       <div class="form-group">
+         <label class="control-label" for="isValid">{{'IsValid' | translate}}</label> <br />
+         <p-toggleButton name="isValid" inputId="isValid" onLabel="{{'Yes' | translate}}" offLabel="{{'No' | translate}}" [(ngModel)]="role.isValid"></p-toggleButton>
+       </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+          <button class="btn btn-secondary btn-lg full-width" [hidden]="isManage" type="button" (click)="openForm(false)">{{'Cancel' | translate}}</button>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+          <button class="btn btn-blue btn-lg full-width" [disabled]="!rForm.form.valid" type="submit">{{'Save' | translate}} <app-progressbar [isSpinner]="true" *ngIf="isSubmitted"></app-progressbar></button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</form>

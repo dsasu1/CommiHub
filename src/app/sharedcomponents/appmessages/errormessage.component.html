@@ -1,0 +1,4 @@
+
+<p-messages [(value)]="appMsg.errorMessages" *ngIf="!appMsg.isGrowl"></p-messages>
+
+<p-growl [(value)]="appMsg.errorMessages"  [life]="appMsg.lifeSpanInMilli" *ngIf="appMsg.isGrowl"></p-growl>

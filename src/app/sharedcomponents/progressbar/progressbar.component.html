@@ -1,0 +1,20 @@
+<div class="container"  *ngIf="!isSpinner" >
+  <div class="row">
+    <div class="col-xl-6  offset-lg-3 col-lg-6 col-md-12 col-sm-12 col-xs-12">
+      <div class="ui-block">
+        <div class="ui-block-title">
+          <h5 class="title">{{'Loading' | translate}}...</h5>
+        </div>
+        <div class="ui-block-content">
+
+          <div class="progress">
+            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="98" aria-valuemin="0" aria-valuemax="100" style="width: 98%"></div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<i *ngIf="isSpinner" class="fa fa-spinner fa-spin"></i>

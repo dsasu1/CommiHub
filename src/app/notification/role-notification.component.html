@@ -1,0 +1,45 @@
+<div class="ui-block">
+  <div class="ui-block-title">
+    <h6 class="title">{{'NotificationRules' | translate}}</h6>
+  </div>
+  <div class="ui-block-content">
+    <div class="ui-block-content">
+      <div class="row">
+       
+        <div class="col-lg-12">
+          <form  ngNativeValidate>
+            <div class="row">
+              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="form-group">
+                  <app-errormessage [appMsg]="InfoMsg"></app-errormessage>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="description-toggle" *ngFor="let item of items">
+                  <div class="description-toggle-content">
+                    <div class="h6">Notifications Sound</div>
+                    <p>A sound will be played each time you receive a new activity notification</p>
+                  </div>
+
+                  <div class="togglebutton">
+                    
+                      <p-toggleButton name="test" [(ngModel)]="checked"></p-toggleButton>
+               
+                  </div>
+                </div>
+            
+               
+               
+              </div>
+            </div>
+
+          </form>
+        </div>
+      </div>
+
+
+    </div>
+ </div>
+</div>

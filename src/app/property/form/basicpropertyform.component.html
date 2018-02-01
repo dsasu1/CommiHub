@@ -1,0 +1,133 @@
+<div class="row" *ngIf="!isPropManage">
+  <div class="col-lg-12">
+    <button class="btn btn-success" [hidden]="isOpenForm" type="button" (click)="openForm(true)"><i class="fa fa-plus"></i> {{"AddNew" | translate}}</button>
+  </div>
+</div>
+<form *ngIf="isOpenForm" #propForm="ngForm" (ngSubmit)="onPropSubmit(propForm)" ngNativeValidate>
+  <div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <div class="form-group">
+        <app-errormessage [appMsg]="propInfoMsg"></app-errormessage>
+      </div>
+    </div>
+   </div>
+
+  <div class="row" *ngIf="!isAdvanceInfo">
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+      <div class="form-group">
+        <label class="control-label" for="propType">{{'SelectPropertyType' | translate}}</label>
+        <select class="select-2" id="propType" [(ngModel)]="newProperty.propType" name="propType" required>
+          <option *ngFor="let prop of propTypes" [ngValue]="prop.title">{{prop.title}}</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+      <div class="form-group">
+        <label class="control-label" for="propName">{{'PropertyName' | translate}}</label>
+        <input class="form-control" id="propName" name="propName" pInputText placeholder="{{'EnterPropertyName' | translate}}" type="text" [(ngModel)]="newProperty.propName" [attr.maxlength]="siteConstant.TextMaxLength" required>
+      </div>
+    </div>
+
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+      <div class="form-group">
+        <label class="control-label" for="countryCode">{{'SelectCountry' | translate}}</label>
+        <select class="select-2" id="countryCode" [(ngModel)]="newProperty.zipCode.countryCode" name="countryCode"  required>
+          <option *ngFor="let nation of countries" [ngValue]="nation.code">{{nation.title}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+      <div class="form-group">
+        <label class="control-label" for="zipCode">{{'ZipCode' | translate}}</label>
+        <p-inputMask id="zipCode" name="zipCode" placeholder="{{'EnterZipCode' | translate}}" [(ngModel)]="newProperty.zipCode.code" mask="99999" (onBlur)="onCodeBlur($event)" [attr.maxlength]="siteConstant.ZipMaxLength" required></p-inputMask>
+      </div>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+      <div class="form-group">
+        <label class="control-label" for="streetOne">{{'Address' | translate}}</label>
+
+        <input class="form-control" id="streetOne" name="streetOne" pInputText placeholder="{{'EnterAddress' | translate}}" type="text" [(ngModel)]="newProperty.streetOne" [attr.maxlength]="siteConstant.TextMaxLength" required>
+      </div>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+      <div class="form-group">
+        <label class="control-label" for="streetTwo">{{'Addressline2' | translate}}</label>
+
+        <input class="form-control" id="streetTwo" name="streetTwo" pInputText placeholder="{{'EnterAddress' | translate}}" type="text" [(ngModel)]="newProperty.streetTwo" [attr.maxlength]="siteConstant.TextMaxLength">
+      </div>
+    </div>
+
+    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+      <div class="form-group">
+        <label class="control-label" for="city">{{'City' | translate}}</label>
+
+        <input class="form-control" id="city" name="city" pInputText placeholder="{{'EnterCity' | translate}}" type="text" [(ngModel)]="newProperty.zipCode.city" [attr.maxlength]="siteConstant.TextMaxLength" required>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+      <div class="form-group">
+        <label class="control-label" for="province">{{'StateProvince' | translate}}</label>
+
+        <input class="form-control" id="province" name="province" pInputText placeholder="{{'EnterStateProvince' | translate}}" type="text" [(ngModel)]="newProperty.zipCode.province" [attr.maxlength]="siteConstant.TextMaxLength" required>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+      <div class="form-group">
+        <label class="control-label" for="county">{{'County' | translate}}</label>
+
+        <input class="form-control" id="county" name="county" pInputText placeholder="{{'EnterCounty' | translate}}" type="text" [(ngModel)]="newProperty.zipCode.county" [attr.maxlength]="siteConstant.TextMaxLength">
+      </div>
+    </div>
+    </div>
+    <div class="row" *ngIf="isAdvanceInfo">
+      <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+        <div class="form-group">
+          <label class="control-label" for="phone">{{'Phone' | translate}}</label>
+          <p-inputMask name="phone" id="phone" placeholder="{{'EnterPhone' | translate}}" [(ngModel)]="newProperty.phone" mask="(999) 999-9999" [attr.maxlength]="siteConstant.PhoneMaxLength" ></p-inputMask>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+        <div class="form-group">
+          <label class="control-label" for="fax">{{'Fax' | translate}}</label>
+          <p-inputMask name="fax" id="fax" placeholder="{{'EnterFax' | translate}}" [(ngModel)]="newProperty.fax" mask="(999) 999-9999" [attr.maxlength]="siteConstant.PhoneMaxLength"></p-inputMask>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+        <div class="form-group">
+          <label class="control-label" for="email">{{'Email' | translate}}</label>
+
+          <input class="form-control" id="email" name="email" pInputText placeholder="{{'EnterEmail' | translate}}" type="email" [(ngModel)]="newProperty.email" [attr.maxlength]="siteConstant.EmailMaxLength">
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+        <div class="form-group">
+          <label class="control-label" for="weburl">{{'Website' | translate}}</label>
+
+          <input class="form-control" id="weburl" name="weburl" pInputText placeholder="{{'EnterWebsite' | translate}}" type="url" [(ngModel)]="newProperty.weburl" [attr.maxlength]="siteConstant.EmailMaxLength">
+        </div>
+      </div>
+
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" >
+        <div class="form-group">
+          <label class="control-label" for="aboutUs">{{'About' | translate}}</label>
+
+          <p-editor id="aboutUs" [(ngModel)]="newProperty.aboutUs" [style]="{'min-height':'320px'}" class="form-control" name="aboutUs" [attr.maxlength]="siteConstant.Max2000Length"></p-editor>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <button class="btn btn-secondary btn-lg full-width" type="button" *ngIf="!isPropManage" (click)="openForm(false)">{{'Cancel' | translate}}</button>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <button class="btn btn-blue btn-lg full-width" [disabled]="!propForm.form.valid" type="submit">{{'Save' | translate}} <app-progressbar [isSpinner]="true" *ngIf="isSubmitted"></app-progressbar></button>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+</form>
