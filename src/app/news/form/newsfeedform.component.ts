@@ -5,7 +5,7 @@ import { PropertyInformation } from '../../property/model/property.model';
 import { NgForm } from '@angular/forms';
 import { NewsPostMod } from '../model/news.model';
 import { ErrorMessage } from '../../model/utility.model';
-import { AppConstants, UserTypeEnum, ShareWithEnum } from '../../common/AppConstants';
+import { UserTypeEnum,PsMaxLengths, ShareWithEnum } from '../../common/AppConstants';
 import { NewsService } from '../service/news.service';
 import { ResidentsService } from '../../property/tenant/service/residents.service';
 @Component({
@@ -16,7 +16,7 @@ export class NewsfeedformComponent implements OnInit {
   selectedProperty: PropertyInformation;
   currentUser: UserSession;
   newsForm: NewsPostMod = new NewsPostMod();
-  siteConstant: AppConstants = AppConstants;
+  siteConstant: PsMaxLengths = new PsMaxLengths();
   InfoMsg: ErrorMessage = new ErrorMessage();
   isSubmitted: boolean = false;
   canSeeNewsForm: boolean = false;

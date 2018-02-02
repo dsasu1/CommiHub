@@ -3,7 +3,7 @@ import { NgForm } from '@angular/forms';
 import { AppsessionService } from '../service/appsession.service';
 import { ErrorMessage } from '../model/utility.model';
 import { UserSession } from '../model/usersession.model';
-import { AppConstants } from '../common/AppConstants';
+import { AppConstants,PsMaxLengths } from '../common/AppConstants';
 import { Staff, StafffRole } from './model/staff.model';
 import { AvailableRole } from '../role/model/role.model';
 import { StaffsService } from './service/staff.service';
@@ -15,7 +15,7 @@ import { StaffsService } from './service/staff.service';
 export class RoleStaffsComponent implements OnInit, OnDestroy{
   InfoMsg: ErrorMessage = new ErrorMessage();
   role: AvailableRole;
-  siteConstant: AppConstants = AppConstants;
+  siteConstant: PsMaxLengths = new PsMaxLengths();
   staffForm: StafffRole = new StafffRole();
   //availableStaffdata: Staff[];
   dropDownData: Staff[];

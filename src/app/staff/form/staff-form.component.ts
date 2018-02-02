@@ -4,7 +4,7 @@ import { AppsessionService } from '../../service/appsession.service';
 import { Staff } from '../model/staff.model';
 import { ErrorMessage } from '../../model/utility.model';
 import { UserSession } from '../../model/usersession.model';
-import { AppConstants } from '../../common/AppConstants';
+import {PsMaxLengths } from '../../common/AppConstants';
 import { StaffsService } from '../service/staff.service';
 
 @Component({
@@ -15,7 +15,7 @@ export class StaffFormComponent implements OnInit {
   isOpenForm: boolean = false;
   staffForm: Staff = new Staff();
   InfoMsg: ErrorMessage = new ErrorMessage();
-  siteConstant: AppConstants = AppConstants;
+  siteConstant: PsMaxLengths = new PsMaxLengths();
   isSubmitted: boolean = false;
   constructor(private appsession: AppsessionService, private staffRepo: StaffsService) { }
 

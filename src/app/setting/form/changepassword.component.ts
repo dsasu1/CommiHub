@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from "@angular/forms";
-import { AppConstants, ChangeType } from '../../common/AppConstants';
+import { AppConstants,PsMaxLengths, ChangeType } from '../../common/AppConstants';
 import { UsersService } from '../../service/model.service';
 import { UserType, User } from '../../model/users.model';
 import { UserSession } from '../../model/usersession.model';
@@ -13,7 +13,7 @@ import { ErrorMessage, MessageDetail } from '../../model/utility.model';
 })
 export class ChangepasswordComponent implements OnInit {
   changePassMsg: ErrorMessage = new ErrorMessage();
-  siteConstant: AppConstants = AppConstants;
+  siteConstant: PsMaxLengths = new PsMaxLengths();
   currentUser: UserSession;
   user: User;
   isSubmitted: boolean = false;

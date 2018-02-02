@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { AppsessionService } from '../../../service/appsession.service';
 import { UsersService } from '../../../service/model.service'
 import { User } from '../../../model/users.model'
-import { AppConstants } from '../../../common/AppConstants';
+import { AppConstants,PsMaxLengths } from '../../../common/AppConstants';
 import { ErrorMessage } from '../../../model/utility.model';
 
 
@@ -15,7 +15,7 @@ import { ErrorMessage } from '../../../model/utility.model';
 })
 export class ForgotaccountComponent implements OnInit {
     forgotAccountMsg: ErrorMessage = new ErrorMessage();
-    siteConstant: AppConstants = AppConstants;
+    siteConstant: PsMaxLengths = new PsMaxLengths();
     isrequiresSecurity: boolean = false;
     titleKey: string = "FindAccount";
     findAccountUser: User = new User();

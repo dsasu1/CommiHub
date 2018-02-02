@@ -4,7 +4,7 @@ import { AppsessionService } from '../../service/appsession.service';
 import { AvailableRole } from '../model/role.model';
 import { ErrorMessage, MessageDetail } from '../../model/utility.model';
 import { UserSession } from '../../model/usersession.model';
-import { AppConstants } from '../../common/AppConstants';
+import { PsMaxLengths} from '../../common/AppConstants';
 import { RolesService } from '../service/role.service';
 
 @Component({
@@ -17,7 +17,7 @@ export class RoleformComponent implements OnInit {
 
   isOpenForm: boolean = false;
   InfoMsg: ErrorMessage = new ErrorMessage();
-  siteConstant: AppConstants = AppConstants;
+  siteConstant: PsMaxLengths = new PsMaxLengths();
   isSubmitted: boolean = false;
   constructor(private appsession: AppsessionService, private roleRepo: RolesService) { }
 

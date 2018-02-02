@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from "@angular/forms";
-import { AppConstants, ChangeType } from '../../common/AppConstants';
+import {PsMaxLengths,ChangeType } from '../../common/AppConstants';
 import { UsersService, GlobalService } from '../../service/model.service';
 import { UserType, User } from '../../model/users.model';
 import { SecurityQuestions } from '../../model/global.model';
@@ -15,7 +15,7 @@ import { ErrorMessage, MessageDetail} from '../../model/utility.model';
 export class SecurityComponent implements OnInit {
   secQuestions: SecurityQuestions[] = new Array<SecurityQuestions>();
   securityMsg: ErrorMessage = new ErrorMessage();
-  siteConstant: AppConstants = AppConstants;
+  siteConstant: PsMaxLengths = new PsMaxLengths();
   currentUser: UserSession;
   user: User;
   isSubmitted: boolean = false;

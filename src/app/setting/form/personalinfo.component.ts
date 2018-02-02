@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from "@angular/forms";
 import { Router, ActivatedRoute } from '@angular/router';
-import { AppConstants, UserTypeEnum, ChangeType, PSUploadType } from '../../common/AppConstants';
+import { PsMaxLengths, UserTypeEnum, ChangeType, PSUploadType } from '../../common/AppConstants';
 import { UsersService, GlobalService } from '../../service/model.service';
 import { UserType, User } from '../../model/users.model';
 import { UserSession } from '../../model/usersession.model';
@@ -18,7 +18,7 @@ import { AppsessionService } from '../../service/appsession.service';
 export class PersonalinfoComponent implements OnInit {
    upOtions: FileOptions = new FileOptions();
     personalInfoMsg: ErrorMessage = new ErrorMessage();
-    siteConstant: AppConstants = AppConstants;
+    siteConstant: PsMaxLengths = new PsMaxLengths();
     currentUser: UserSession;
     user: User;
     isHideLastName: boolean = false;

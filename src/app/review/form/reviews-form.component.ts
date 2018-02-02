@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ReviewService } from '../service/review.service';
 import { AppsessionService } from '../../service/appsession.service';
 import { PropertyInformation } from '../../property/model/property.model';
-import { AppConstants, UserTypeEnum } from '../../common/AppConstants';
+import {PsMaxLengths, UserTypeEnum } from '../../common/AppConstants';
 import { ErrorMessage } from '../../model/utility.model';
 import { UserSession } from '../../model/usersession.model';
 import { NgForm } from '@angular/forms';
@@ -17,7 +17,7 @@ import { ResidentsService } from '../../property/tenant/service/residents.servic
 export class ReviewsFormComponent implements OnInit {
   reviews: ReviewMod[];
   selectedProperty: PropertyInformation;
-  siteConstant: AppConstants = AppConstants;
+  siteConstant: PsMaxLengths = new PsMaxLengths();
   currentUser: UserSession;
   revForm: ReviewMod = new ReviewMod();
   showForm: boolean = false;

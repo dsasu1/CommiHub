@@ -4,7 +4,7 @@ import { AppsessionService } from '../../service/appsession.service';
 import { UserSession } from '../../model/usersession.model';
 import { PropertyInformation } from '../../property/model/property.model';
 import { CommentCardMod } from '../model/commentcard.model';
-import { AppConstants, UserTypeEnum } from '../../common/AppConstants';
+import { PsMaxLengths, UserTypeEnum } from '../../common/AppConstants';
 import { ErrorMessage } from '../../model/utility.model';
 import { CommentCardService } from '../service/commentcard.service';
 import {ResidentsService } from '../../property/tenant/service/residents.service';
@@ -17,7 +17,7 @@ export class CommentcardformComponent implements OnInit {
   commentForm: CommentCardMod = new CommentCardMod();
   selectedProperty: PropertyInformation;
   currentUser: UserSession;
-  siteConstant: AppConstants = AppConstants;
+  siteConstant: PsMaxLengths = new PsMaxLengths();
   showForm: boolean = false;
   canSeeCommentForm: boolean = false;
   commentInfoMsg: ErrorMessage = new ErrorMessage();

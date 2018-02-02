@@ -3,7 +3,7 @@ import { AppsessionService } from '../../service/appsession.service';
 import { UserSession } from '../../model/usersession.model';
 import { PropertyInformation } from '../../property/model/property.model';
 import { NgForm } from '@angular/forms';
-import { AppConstants, UserTypeEnum } from '../../common/AppConstants';
+import { PsMaxLengths,UserTypeEnum } from '../../common/AppConstants';
 import { ErrorMessage } from '../../model/utility.model';
 import { ServiceRequestService } from '../service/servicerequest.service';
 import { ServiceRequestMod } from '../model/servicerequest.model';
@@ -16,7 +16,7 @@ import { ResidentsVM} from '../../property/tenant/model/residents.model';
 })
 export class ServicerequestsformComponent implements OnInit {
   selectedProperty: PropertyInformation;
-  siteConstant: AppConstants = AppConstants;
+  siteConstant: PsMaxLengths = new PsMaxLengths();
   currentUser: UserSession;
   serviceReq: ServiceRequestMod = new ServiceRequestMod();
   showForm: boolean = false;

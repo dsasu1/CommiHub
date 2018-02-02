@@ -3,7 +3,7 @@ import { NgForm } from '@angular/forms';
 import { AppsessionService } from '../../../service/appsession.service';
 import { ErrorMessage } from '../../../model/utility.model';
 import { UserSession } from '../../../model/usersession.model';
-import { AppConstants } from '../../../common/AppConstants';
+import { PsMaxLengths } from '../../../common/AppConstants';
 import { TenantUnit } from '../../model/property.model';
 import { PropertyService } from '../../service/property.service';
 
@@ -16,7 +16,7 @@ export class NewhomeFormComponent implements OnInit {
   isOpenForm: boolean = false;
   unitForm: TenantUnit = new TenantUnit();
   InfoMsg: ErrorMessage = new ErrorMessage();
-  siteConstant: AppConstants = AppConstants;
+  siteConstant: PsMaxLengths = new PsMaxLengths();
   isSubmitted: boolean = false;
   constructor(private appsession: AppsessionService, private propService: PropertyService) { }
 

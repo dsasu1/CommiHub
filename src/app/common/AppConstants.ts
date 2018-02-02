@@ -1,18 +1,20 @@
+export class PsMaxLengths{
+  public  EmailMaxLength:number = 100;
+  public  PasswordMaxLength:number = 100;
+  public  FirstNameMaxLength:number = 250;
+  public  LastNameMaxLength:number = 200;
+  public  TextMaxLength:number = 200;
+  public  ZipMaxLength:number = 10;
+  public  PhoneMaxLength:number = 15;
+  public  Max100Length:number = 100;
+  public  Max250Length:number = 250;
+  public  Max500Length:number = 500;
+  public  Max1000Length:number = 1000;
+  public  Max2000Length:number = 2000;
+}
+
 export class AppConstants 
 {
-
-  public static readonly EmailMaxLength = 100;
-  public static readonly PasswordMaxLength = 100;
-  public static readonly FirstNameMaxLength = 250;
-  public static readonly LastMaxLength = 200;
-  public static readonly TextMaxLength = 200;
-  public static readonly ZipMaxLength = 10;
-  public static readonly PhoneMaxLength = 15;
-  public static readonly Max100Length = 100;
-  public static readonly Max250Length = 250;
-  public static readonly Max500Length = 500;
-  public static readonly Max1000Length = 1000;
-  public static readonly Max2000Length = 2000;
 
   public static readonly AcceptTermsError = "AcceptTermsError"; 
   public static readonly ConfirmPasswordMatchError = "ConfirmPasswordMatchError";

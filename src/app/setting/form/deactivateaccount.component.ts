@@ -4,7 +4,7 @@ import { UserType, User } from '../../model/users.model';
 import { UserSession } from '../../model/usersession.model';
 import { AppsessionService } from '../../service/appsession.service';
 import { ErrorMessage } from '../../model/utility.model'; 
-import { AppConstants} from '../../common/AppConstants';
+import { PsMaxLengths} from '../../common/AppConstants';
 import { NgForm } from "@angular/forms";
 import { MessageDetail } from '../../model/utility.model';
 
@@ -15,7 +15,7 @@ import { MessageDetail } from '../../model/utility.model';
 })
 export class DeactivateaccountComponent implements OnInit {
   infoMsg: ErrorMessage = new ErrorMessage();
-  siteConstant: AppConstants = AppConstants;
+  siteConstant: PsMaxLengths = new PsMaxLengths();
   currentPasswod: string;
   isDeactivateConfirm: boolean = false;
   user: User = new User();

@@ -4,7 +4,7 @@ import { AppsessionService } from '../../service/appsession.service';
 import { PropertyInformation, PropertyType} from '../model/property.model';
 import { ErrorMessage, MessageDetail } from '../../model/utility.model';
 import { UserSession } from '../../model/usersession.model';
-import { AppConstants, UserTypeEnum, ChangeType } from '../../common/AppConstants';
+import { PsMaxLengths, UserTypeEnum, ChangeType } from '../../common/AppConstants';
 import { GlobalService } from '../../service/model.service';
 import { PropertyService } from '../service/property.service';
 import { Country } from '../../model/global.model';
@@ -18,7 +18,7 @@ export class BasicpropertyformComponent implements OnInit {
   @Input() isPropManage: boolean;
   @Input() isAdvanceInfo: boolean;
     propInfoMsg: ErrorMessage = new ErrorMessage();
-    siteConstant: AppConstants = AppConstants;
+    siteConstant: PsMaxLengths = new PsMaxLengths();
     propTypes: PropertyType[] = new Array<PropertyType>();
     countries: Country[] = new Array<Country>();
     isOpenForm: boolean = false;

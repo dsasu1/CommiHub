@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from "@angular/forms";
 import { ActivatedRoute } from '@angular/router';
-import { AppConstants, UserTypeEnum } from '../../../common/AppConstants';
+import { PsMaxLengths, AppConstants, UserTypeEnum } from '../../../common/AppConstants';
 import { UsersService } from '../../../service/model.service';
 import { UserType, User } from '../../../model/users.model';
 import { AppsessionService } from '../../../service/appsession.service';
@@ -19,7 +19,7 @@ import { RecaptchaResponse} from '../../../sharedcomponents/recaptcha/model/reca
 export class RegisterloginformComponent implements OnInit {
   loginRegisterMsg: ErrorMessage = new ErrorMessage();
   returnUrl: string;
-  siteConstant: AppConstants = AppConstants;
+  siteConstant: PsMaxLengths = new PsMaxLengths();
   registerUser: User = new User();
   loginUser: User = new User();
   isHideLastName: boolean = false;

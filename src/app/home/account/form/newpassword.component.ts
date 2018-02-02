@@ -3,7 +3,7 @@ import { NgForm } from '@angular/forms';
 import { ActivatedRoute } from "@angular/router";
 import { User } from '../../../model/users.model';
 import { UsersService } from '../../../service/model.service';
-import { AppConstants } from '../../../common/AppConstants';
+import { AppConstants ,PsMaxLengths} from '../../../common/AppConstants';
 import { AppsessionService } from '../../../service/appsession.service';
 import { ErrorMessage } from '../../../model/utility.model';
 
@@ -16,7 +16,7 @@ export class NewpasswordComponent implements OnInit {
     titleKey: string = "NewPassword";
     newPassAccountMsg: ErrorMessage = new ErrorMessage();
     newPasswordUser: User = new User();
-    siteConstant: AppConstants = AppConstants;
+    siteConstant: PsMaxLengths = new PsMaxLengths();
     isSubmitted: boolean = false;
     constructor(private userSource: UsersService,  private appsession: AppsessionService, private activeRoute: ActivatedRoute) { }
 
