@@ -37,6 +37,7 @@ export class GlobalmenuComponent implements OnInit,OnDestroy {
 
 
     ngOnInit() {
+      this.isLoggedIn = this.appsession.IsUserLoggedIn;
       this.subsriptionIsUserLoggedIn =  this.appsession.IsUserLoggedInChange.subscribe(value => {
         this.isLoggedIn = value;
      })

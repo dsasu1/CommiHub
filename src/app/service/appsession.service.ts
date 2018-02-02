@@ -118,6 +118,7 @@ export class AppsessionService {
         this.UserSessionChange.next(null);
         this.IsUserLoggedInChange.next(this.IsUserLoggedIn);
         this.notifyService.notificationMaster = null;
+        this.currentUnviewdNotificationCountChange.next(0);
         if (!redirectHandled) {
           this.route.navigate(['']);
         }
