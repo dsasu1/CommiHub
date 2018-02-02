@@ -23,7 +23,7 @@ export class PropertyPageComponent implements OnInit {
           this.selectedProperty = this.appsession.selectedProperty;
           this.titleKey = this.selectedProperty.propName;
    
-           this.coverimage = this.appsession.getImageData(this.selectedProperty.coverOriginal, "image", "../../../assets / img / top - header1.jpg");
+           this.coverimage = this.appsession.getImageData(this.selectedProperty.coverOriginal, "image", "../../../assets/img/top-header1.jpg");
           
        
           this.appsession.SetAppTitle(this.titleKey);

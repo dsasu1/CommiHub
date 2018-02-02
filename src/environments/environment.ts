@@ -7,6 +7,6 @@ export const environment = {
   production: false,
   apiUrl: "http://localhost:52368/api/",
   apikey: "73A19FAC-4B14-405D-9578-D2640D9E9DC9",
-  appName: "RentSR",
+  appName: "CommiHub",
   azurePhotosUrl: "https://docsas.blob.core.windows.net/photos/"
 };

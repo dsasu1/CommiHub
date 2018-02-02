@@ -3,7 +3,7 @@
 <div  [ngClass]="{'fixed-sidebar': true , 'open': leftSideMenuOpen}">
   <div class="fixed-sidebar-left sidebar--small" id="sidebar-left">
     <a  routerLink ="{{isLoggedIn? '' :''}}" class="logo">
-      <img src="../../../assets/img/logo.png" alt="{{'CommiHub' | translate}}">
+      <img src="../../../assets/img/logo.png" style="max-height:60px;" alt="{{'CommiHub' | translate}}">
     </a>
 
     <div class="mCustomScrollbar" data-mcs-theme="dark">
@@ -13,7 +13,7 @@
 
   <div class="fixed-sidebar-left sidebar--large" id="sidebar-left-1">
     <a routerLink ="{{isLoggedIn? '' :''}}"  class="logo">
-      <img src="../../../assets/img/logo.png" alt="{{'CommiHub' | translate}}">
+      <img src="../../../assets/img/logo.png" style="max-height:60px;" alt="{{'CommiHub' | translate}}">
       <h6 class="logo-title">{{'CommiHub' | translate}}</h6>
     </a>
 
@@ -39,14 +39,14 @@
 
   <div class="fixed-sidebar-left sidebar--small" id="sidebar-left-responsive">
     <a  class="logo js-sidebar-open" style="cursor:pointer;" (click)="OpenLeftMenu()">
-      <img src="../../../assets/img/logo.png" alt="{{'CommiHub' | translate}}">
+      <img src="../../../assets/img/logo.png" style="max-height:60px;" alt="{{'CommiHub' | translate}}">
     </a>
 
   </div>
 
   <div class="fixed-sidebar-left sidebar--large" id="sidebar-left-1-responsive">
     <a routerLink ="{{isLoggedIn? '' :''}}"  class="logo">
-      <img src="../../../assets/img/logo.png" alt="{{'CommiHub' | translate}}">
+      <img src="../../../assets/img/logo.png" style="max-height:60px;" alt="{{'CommiHub' | translate}}">
       <h6 class="logo-title">{{'CommiHub' | translate}}</h6>
     </a>
 
@@ -55,7 +55,7 @@
       <div class="control-block">
         <div class="author-page author vcard inline-items" *ngIf="isLoggedIn">
           <div class="author-thumb">
-            <img alt="author" src="../../../assets/img/author-page.jpg" class="avatar">
+            <img alt="author" [src]="GetImageUrl()" style="max-height:40px;" class="avatar">
             <span class="icon-status online"></span>
           </div>
           <a href="" class="author-name fn">

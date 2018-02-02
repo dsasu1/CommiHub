@@ -283,3 +283,7 @@
   overflow: hidden;
 }
 
+
+no-color{
+  color: inherit;
+}

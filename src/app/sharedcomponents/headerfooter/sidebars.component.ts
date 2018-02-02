@@ -25,7 +25,12 @@ export class SidebarsComponent implements OnInit, OnDestroy {
     CloseLeftMenu() {
         this.appsession.OpenLeftMenu(false);
     }
+    
+    GetImageUrl() {
+      let result = this.appsession.getImageData(this.currentUser.userVM.photoThumbnail, 'image', '../../../assets/img/avatar1.jpg');
+      return result;
 
+    }
 
     ngOnInit() {
       this.subscription = this.appsession.LeftMenuOpenChange.subscribe(value => {

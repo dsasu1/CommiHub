@@ -66,6 +66,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
     }
 
+    routeToNotification() {
+      this.appsession.redirectToRoute("/notification");
+    }
+
     ngOnDestroy() {
 
       this.subsriptionHeaderMsg.unsubscribe();

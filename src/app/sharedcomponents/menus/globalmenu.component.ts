@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit, OnDestroy} from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { AppsessionService } from '../../service/appsession.service'
 import { GlobalService } from '../../service/model.service';
@@ -8,14 +8,14 @@ import { Language } from '../../model/global.model';
   selector: 'app-globalmenu',
   templateUrl: './globalmenu.component.html'
 })
-export class GlobalmenuComponent implements OnInit {
+export class GlobalmenuComponent implements OnInit,OnDestroy {
   currentDiplayLang: string;
   isLoggedIn: boolean = false;
   currentValueLang: string;
   availableLangs: Language[];
   alreadySetLanguage: boolean =false;
   switchedValueLang: string;
-  subscription: any;
+  private subsriptionIsUserLoggedIn: any;
     constructor(private translate: TranslateService,  private appsession: AppsessionService, private globalSource: GlobalService) {
         
     }
@@ -37,8 +37,10 @@ export class GlobalmenuComponent implements OnInit {
 
 
     ngOnInit() {
+      this.subsriptionIsUserLoggedIn =  this.appsession.IsUserLoggedInChange.subscribe(value => {
+        this.isLoggedIn = value;
+     })
 
-      this.isLoggedIn = this.appsession.IsUserLoggedIn;
       this.loadData();
     }
 
@@ -73,6 +75,8 @@ export class GlobalmenuComponent implements OnInit {
       }
     }
 
-
+    ngOnDestroy(){
+      this.subsriptionIsUserLoggedIn.unsubscribe();
+    }
 
 }
