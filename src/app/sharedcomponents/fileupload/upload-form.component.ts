@@ -30,17 +30,17 @@ export class UploadFormComponent implements OnInit {
   }
 
   onUpload(form: NgForm) {
-    //if (this.uploadOptions.uploadType == PSUploadType[PSUploadType.CoverImage] || this.uploadOptions.uploadType == PSUploadType[PSUploadType.ProfilePic]) {
-    //  let item = this.uploadOptions.uploadTarget;
+    if (this.uploadOptions.uploadType == PSUploadType[PSUploadType.CoverImage] || this.uploadOptions.uploadType == PSUploadType[PSUploadType.ProfilePic]) {
+      let item = this.uploadOptions.uploadTarget;
 
-    //  if (item != null && item.isDemoAccount) {
-    //    let message: MessageDetail = new MessageDetail();
-    //    message.isInfo = true;
-    //    message.msg = this.appSession.getTranslated("DemoFunctionalityLimited");
-    //    this.appSession.setGlobalHeaderMessage(message);
-    //    return;
-    //  }
-    //}
+      if (item != null && item.isDemoAccount) {
+        let message: MessageDetail = new MessageDetail();
+        message.isInfo = true;
+        message.msg = this.appSession.getTranslated("DemoFunctionalityLimited");
+        this.appSession.setGlobalHeaderMessage(message);
+        return;
+       }
+    }
 
     if (form.valid) {
 
@@ -95,7 +95,7 @@ export class UploadFormComponent implements OnInit {
   private isValidFiles(files) {
     // Check Number of files
     if (files.length > this.uploadOptions.maxFiles) {
-      this.InfoMsg.add("Error: At a time you can upload only  files");
+      this.InfoMsg.add(this.appSession.getTranslated("MaxFileAllowedPerUpload") + this.uploadOptions.maxFiles);
       return;
     }
     this.isValidFileExtension(files);
@@ -112,7 +112,7 @@ export class UploadFormComponent implements OnInit {
       // Check the extension exists
       var exists = extensions.includes(ext);
       if (!exists) {
-        this.InfoMsg.add("Error (Extension): " + files[i].name);
+        this.InfoMsg.add(this.appSession.getTranslated("InvalidExtension") + files[i].name);
       }
       // Check file size
       this.isValidFileSize(files[0]);
@@ -123,6 +123,6 @@ export class UploadFormComponent implements OnInit {
     var fileSizeinMB = file.size / (1024 * 1000);
     var size = Math.round(fileSizeinMB * 100) / 100; // convert upto 2 decimal place
     if (size > this.uploadOptions.maxSize)
-      this.InfoMsg.add("Error (File Size): " + file.name + ": exceed file size limit of " + "MB ( " + size + "MB )");
+      this.InfoMsg.add(this.appSession.getTranslated("ExceededFileSizeLimit") + file.name + " "  + size + " MB");
   }
 }
