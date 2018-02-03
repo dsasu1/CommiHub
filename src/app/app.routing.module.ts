@@ -25,10 +25,10 @@ const routes: Routes = [
     { path: "useragreement", component: UseragreementComponent, canActivate: [UserAuthenticationGuard] },
     { path: "communityguide", component: CommunityguidelinesComponent },
     { path: "help", component: HelpComponent ,canActivate: [UserAuthenticationGuard]},
-   // { path: "notification", component: NotificationComponent, canActivate: [UserAuthenticationGuard] },
+  
 
       // otherwise redirect to home
-    { path: '**', redirectTo: '' }
+    { path: '**', redirectTo: 'home' }
 ]
 
 @NgModule({
