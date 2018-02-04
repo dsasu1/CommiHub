@@ -9,7 +9,7 @@ import { MessageDetail } from '../model/utility.model';
 import { PropertyService } from '../property/service/property.service';
 import { NotificationService } from '../notification/service/notification.service';
 import { Base64 } from 'js-base64';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 import { environment } from '../../environments/environment';
 
 @Injectable()
@@ -43,9 +43,16 @@ export class AppsessionService {
      
         this.IsUserLoggedInChange.subscribe(value => {
             this.IsUserLoggedIn = value;
-        })
+        });
         this.UserSessionChange.subscribe((value) => {
             this.CurrentUser = value
+        });
+        this.route.events.subscribe(ev => {
+          if(this.LeftMenuOpen){
+           if(ev instanceof NavigationEnd){          
+               this.OpenLeftMenu(false);
+             }
+           }
         });
     }
 
