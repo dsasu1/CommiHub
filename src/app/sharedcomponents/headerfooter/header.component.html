@@ -1,7 +1,6 @@
 <!-- Header -->
 
 <header class="header" id="site-header">
-
   <div class="page-title">
     <h6>{{title | translate}}</h6>
   </div>
@@ -19,7 +18,7 @@
     <a href="#" class="link-find-friend">{{'Search' | translate}}</a>-->
 
     <div class="control-block">
-      <app-errormessage [appMsg]="headerInfoMessage"></app-errormessage>
+
       <div class="control-icon more has-items" *ngIf="isLoggedIn">
         <i [ngClass]="{'fa fa-2x fa-bell': true, 'orangeColor': unseenNotificationCount > 0}"></i>
 
@@ -76,7 +75,7 @@
   </div>
 
 </header>
-
+<app-errormessage [appMsg]="headerInfoMessage"></app-errormessage>
 <!-- ... end Header -->
 <!-- Responsive Header -->
 
