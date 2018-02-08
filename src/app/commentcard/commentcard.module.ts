@@ -22,7 +22,7 @@ import { CustompipesModule } from '../common/pipes/custompipes.module';
 
 const routes: Routes = [
 
-  { path: 'commentcard', component: CommentcardComponent, canActivate: [UserAuthenticationGuard], resolve: { propertyInfo: SelectedPropertyResolver }}
+  { path: '', component: CommentcardComponent,  canActivate: [UserAuthenticationGuard], resolve: { propertyInfo: SelectedPropertyResolver }}
 ]
 
 @NgModule({

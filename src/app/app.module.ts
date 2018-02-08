@@ -20,18 +20,12 @@ import { HttpHeadersInterceptor} from './common/intercerptorservice/HttpHeaders.
 //Module
 import { SharedModule } from './sharedcomponents/shared.module';
 import { HomeModule } from './home/home.module';
-import { CommentcardModule } from './commentcard/commentcard.module';
-import { ServicerequestModule } from './servicerequest/servicerequest.module';
-import { ReviewModule } from './review/review.module';
 import { SettingModule } from './setting/setting.module';
-import { NewsModule } from './news/news.module';
-import { ProfileModule } from './profile/profile.module';
-import { EventModule } from './event/event.module';
 import { NotificationModule } from './notification/notification.module'
 import { PropertypageModule } from './property/home/propertypage.module';
 import { ManagementModule } from './management/management.module';
 import { SelectedPropertyResolver } from './property/service/propertInfo.resolver';
-
+import { ReviewService} from './review/service/review.service';
 
 //Routing
 import { AppRoutingModule } from "./app.routing.module";
@@ -43,13 +37,8 @@ import { AppRoutingModule } from "./app.routing.module";
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    SharedModule, HomeModule, CommentcardModule,
-    ServicerequestModule,
-    ReviewModule,
+    SharedModule, HomeModule, 
     SettingModule,
-    NewsModule,
-    ProfileModule,
-    EventModule,
     PropertypageModule,
     ManagementModule,
     NotificationModule,
@@ -60,7 +49,7 @@ import { AppRoutingModule } from "./app.routing.module";
     useClass: HttpHeadersInterceptor,
     multi: true,
   },UsersService, GlobalService,
-     AppsessionService,
+     AppsessionService,ReviewService,
     UserAuthenticationGuard, SelectedPropertyResolver
 
   ],

@@ -25,7 +25,7 @@ import { CustompipesModule } from '../common/pipes/custompipes.module';
 
 const routes: Routes = [
 
-  { path: 'servicerequest', component: ServicerequestComponent, canActivate: [UserAuthenticationGuard], resolve: { propertyInfo: SelectedPropertyResolver } }
+  { path: '', component: ServicerequestComponent, canActivate: [UserAuthenticationGuard], resolve: { propertyInfo: SelectedPropertyResolver } }
 ]
 
 @NgModule({

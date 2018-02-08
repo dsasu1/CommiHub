@@ -25,7 +25,7 @@ import { CustomdirectiveModule } from '../common/directives/customdirective.modu
 
 const routes: Routes = [
 
-  { path: 'newsfeed', component: NewsfeedComponent, canActivate: [UserAuthenticationGuard, NewsGuard], resolve: { propertyInfo: SelectedPropertyResolver } }
+  { path: '', component: NewsfeedComponent, canActivate: [UserAuthenticationGuard, NewsGuard], resolve: { propertyInfo: SelectedPropertyResolver } }
 ]
 
 

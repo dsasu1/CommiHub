@@ -6,7 +6,6 @@ import { AppmessagesModule } from '../sharedcomponents/appmessages/appmessages.m
 import { UserAuthenticationGuard } from '../service/UserAuthenticationGuard';
 
 import { ReviewsComponent } from './reviews.component';
-import { ReviewService} from './service/review.service';
 import { ReviewGuard } from './guards/review.guard';
 import { ReviewsFormComponent} from './form/reviews-form.component';
 import { ProgressbarModule } from '../sharedcomponents/progressbar/progressbar.module';
@@ -18,7 +17,7 @@ import { ReviewsharedModule } from './reviewshared.module';
 
 const routes: Routes = [
 
-  { path: 'reviews', component: ReviewsComponent, canActivate: [UserAuthenticationGuard], resolve: { propertyInfo: SelectedPropertyResolver }}
+  { path: '', component: ReviewsComponent, canActivate: [UserAuthenticationGuard], resolve: { propertyInfo: SelectedPropertyResolver }}
 ]
 
 
@@ -31,7 +30,7 @@ const routes: Routes = [
     RouterModule.forChild(routes)
   ],
   declarations: [ReviewsComponent, ReviewsFormComponent],
-  providers: [ReviewService, ReviewGuard],
+  providers: [ReviewGuard],
   exports: [RouterModule]
 
 })
