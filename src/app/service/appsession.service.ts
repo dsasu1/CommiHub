@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs/Subject';
+import { Subject } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
 import { User } from '../model/users.model';
 import { UserSession } from '../model/usersession.model';

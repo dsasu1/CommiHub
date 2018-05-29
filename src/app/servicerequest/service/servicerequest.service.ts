@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AbstractRestService } from '../../service/BaseService';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { ServiceRequestMod, ServiceRequestStatusMod } from '../model/servicerequest.model';
-import { Subject } from 'rxjs/Subject';
+import { Subject } from 'rxjs';
 
 @Injectable()
 export class ServiceRequestService extends AbstractRestService {

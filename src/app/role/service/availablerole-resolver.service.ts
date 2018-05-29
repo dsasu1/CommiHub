@@ -1,7 +1,10 @@
+
+import {of as observableOf,  Observable } from 'rxjs';
+
+import {catchError, map} from 'rxjs/operators';
 import { Router, Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/of';
+
 import { AvailableRole } from '../model/role.model';
 import { RolesService } from './role.service';
 import { AppsessionService } from '../../service/appsession.service';
@@ -13,7 +16,7 @@ export class AvailableRoleResolver implements Resolve<AvailableRole> {
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<AvailableRole>  {
     let id = route.paramMap.get('id');
 
-    return this.roleService.getAvailableRole(id).map(role => {
+    return this.roleService.getAvailableRole(id).pipe(map(role => {
       if (role) {
         this.appsession.editItem = role;
         return role;
@@ -23,10 +26,10 @@ export class AvailableRoleResolver implements Resolve<AvailableRole> {
         return null;
       }
 
-    }).catch(() => {
+    }),catchError(() => {
       this.router.navigate(['']);
-      return Observable.of(null);
-    })
+      return observableOf(null);
+    }),)
   }
 
 }

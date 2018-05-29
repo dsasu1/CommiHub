@@ -1,3 +1,5 @@
+
+import {map} from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { AbstractRestService } from '../../../service/BaseService';
 import { HttpClient, HttpParams } from '@angular/common/http';
@@ -34,7 +36,7 @@ export class ResidentsService extends AbstractRestService {
 
   hasValidResidency(userId: string, propertyInfoId: string): Observable<boolean> {
 
-     return this.getResidents(userId, propertyInfoId).map(data => {
+     return this.getResidents(userId, propertyInfoId).pipe(map(data => {
 
      if (data != null) {
 
@@ -45,12 +47,12 @@ export class ResidentsService extends AbstractRestService {
 
      return false;
 
-    });
+    }));
   }
 
   hasValidOrPreviousResidency(userId: string, propertyInfoId: string): Observable<boolean> {
 
-    return this.getResidents(userId, propertyInfoId).map(data => {
+    return this.getResidents(userId, propertyInfoId).pipe(map(data => {
 
       if (data != null) {
 
@@ -61,7 +63,7 @@ export class ResidentsService extends AbstractRestService {
 
       return false;
 
-    });
+    }));
   }
 
 

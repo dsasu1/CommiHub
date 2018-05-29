@@ -1,8 +1,11 @@
+
+import {of as observableOf,  Observable } from 'rxjs';
+
+import {catchError, map} from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { Router, CanActivate, CanActivateChild, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { AppsessionService } from '../../service/appsession.service';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/of';
+
 import { UsersService } from '../../service/model.service';
 
 
@@ -13,10 +16,10 @@ export class ManagementGuard implements CanActivate, CanActivateChild {
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
     let currenUser = this.appsession.getCurrentUser();
     if (currenUser!= null && this.appsession.IsHasManageRights) {
-      return Observable.of(true);
+      return observableOf(true);
     }
     else if (currenUser != null) {
-      return this.userService.userHasManagementRights(currenUser.userVM).map(e => {
+      return this.userService.userHasManagementRights(currenUser.userVM).pipe(map(e => {
         if (e == true) {
           this.appsession.IsHasManageRights = true;
           return true;
@@ -25,14 +28,14 @@ export class ManagementGuard implements CanActivate, CanActivateChild {
           this.route.navigate(['/newsfeed']);
           return false;
         }
-      }).catch(() => {
+      }),catchError(() => {
         this.route.navigate(['/newsfeed']);
-        return Observable.of(false);
-      })
+        return observableOf(false);
+      }),)
     }
 
     this.route.navigate(['/newsfeed']);
-    return Observable.of(false);
+    return observableOf(false);
   }
 
   canActivateChild(childRoute: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {

@@ -1,8 +1,11 @@
+
+import {of as observableOf,  Observable } from 'rxjs';
+
+import {catchError, map} from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { CanActivate, CanActivateChild, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { AppsessionService } from '../service/appsession.service';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/of';
+
 import { UsersService } from '../service/model.service';
 
 
@@ -16,10 +19,10 @@ export class UserAuthenticationGuard implements CanActivate, CanActivateChild {
 
       if (!this.appsession.IsUserLoggedIn) {
         if (state.url.indexOf("/property/") != -1 && currenUser == null) {
-          return Observable.of(true);
+          return observableOf(true);
 
         }
-        return this.userService.verifyUserSession(currenUser.userVM).map(e => {
+        return this.userService.verifyUserSession(currenUser.userVM).pipe(map(e => {
           if (e == true) {
             this.appsession.setIsLogIn(true, currenUser);
             return true;
@@ -31,28 +34,28 @@ export class UserAuthenticationGuard implements CanActivate, CanActivateChild {
             return false;
           }
 
-        }).catch(() => {
+        }),catchError(() => {
 
           this.appsession.logOut(true);
           this.appsession.redirectToRoute('', { queryParams: { returnUrl: state.url } });
-          return Observable.of(false);
-        });
+          return observableOf(false);
+        }),);
 
       }
       else {
-        return Observable.of(true);
+        return observableOf(true);
       }
 
     }
     else {
       if (state.url.indexOf("/property/") != -1 || ["/aboutus", "/useragreement", "/privacypolicy", "/help"].indexOf(state.url) != -1) {
-        return Observable.of(true);
+        return observableOf(true);
       
       }
     }
     this.appsession.logOut(true);
     this.appsession.redirectToRoute('', { queryParams: { returnUrl: state.url } });
-    return Observable.of(false);
+    return observableOf(false);
   }
 
   canActivateChild(childRoute: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {

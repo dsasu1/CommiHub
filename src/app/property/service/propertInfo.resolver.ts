@@ -1,7 +1,10 @@
+
+import {of as observableOf,  Observable } from 'rxjs';
+
+import {map, catchError} from 'rxjs/operators';
 import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/of';
+
 import { PropertyInformation } from '../model/property.model';
 import { PropertyService } from './property.service';
 import { AppsessionService } from '../../service/appsession.service';
@@ -20,7 +23,7 @@ export class ManagePropertyInfoResolver implements Resolve<PropertyInformation> 
       if (this.appsession.selectedProperty != null && this.appsession.selectedProperty.id == id) {
 
         this.appsession.editItem = this.appsession.selectedProperty;
-        return Observable.of(this.appsession.selectedProperty);
+        return observableOf(this.appsession.selectedProperty);
       }
       else if (this.appsession.properties != null) {
         let propInfos = this.appsession.properties;
@@ -29,16 +32,16 @@ export class ManagePropertyInfoResolver implements Resolve<PropertyInformation> 
           let props = propInfos.filter(x => x.id == id);
           if (props.length > 0) {
             this.appsession.editItem = props[0];
-            return Observable.of(props[0]);
+            return observableOf(props[0]);
           }
           else {
             this.appsession.redirectToRoute(currentUser.noPropertyRedirectPage);
-            return Observable.of(null);
+            return observableOf(null);
           }
         }
       }
       else {
-        return this.propSevice.getUserProperties(currentUser.userVM.id).map(info => {
+        return this.propSevice.getUserProperties(currentUser.userVM.id).pipe(map(info => {
 
           if (info != null && info.length > 0) {
             let prop = info.filter(x => x.id == id);
@@ -67,18 +70,18 @@ export class ManagePropertyInfoResolver implements Resolve<PropertyInformation> 
           }
 
 
-        }).catch(() => {
+        }),catchError(() => {
  
           this.appsession.redirectToRoute(currentUser.noPropertyRedirectPage);
-          return Observable.of(null);
-        });
+          return observableOf(null);
+        }),);
 
       }
 
      
     }
     this.appsession.redirectToRoute();
-    return Observable.of(null);
+    return observableOf(null);
     
   }
 
@@ -95,18 +98,18 @@ export class SelectedPropertyResolver implements Resolve<PropertyInformation> {
     if (currentUser != null) {
 
       if (this.appsession.selectedProperty != null) {
-        return Observable.of(this.appsession.selectedProperty);
+        return observableOf(this.appsession.selectedProperty);
       }
       else if (this.propSevice.isPropInforAlreadyLoaded) {
         let propInfos = this.propSevice.propInfoList;
 
         if (propInfos != null && propInfos.length > 0) {
           this.appsession.setSelectedProperty(propInfos[0]);
-          return Observable.of(propInfos[0]);
+          return observableOf(propInfos[0]);
         }
       }
       else {
-        return this.propSevice.getUserProperties(currentUser.userVM.id).map(info => {
+        return this.propSevice.getUserProperties(currentUser.userVM.id).pipe(map(info => {
           if (info != null && info.length > 0) {
             this.propSevice.propInfoListChange.next(info);
             this.appsession.properties = info;
@@ -119,10 +122,10 @@ export class SelectedPropertyResolver implements Resolve<PropertyInformation> {
             return null;
           }
 
-        }).catch(() => {
+        }),catchError(() => {
           this.appsession.redirectToRoute();
-          return Observable.of(null);
-        });
+          return observableOf(null);
+        }),);
       }
 
     }
@@ -130,7 +133,7 @@ export class SelectedPropertyResolver implements Resolve<PropertyInformation> {
 
       if (state.url.indexOf("/property/") != -1 ) {
         let id = route.paramMap.get('id');
-        return this.propSevice.getPropertyByUrl(id).map(info => {
+        return this.propSevice.getPropertyByUrl(id).pipe(map(info => {
           if (info != null) {
             this.appsession.setSelectedProperty(info);
             return info;
@@ -140,17 +143,17 @@ export class SelectedPropertyResolver implements Resolve<PropertyInformation> {
             return null;
           }
 
-        }).catch(() => {
+        }),catchError(() => {
           this.appsession.redirectToRoute();
-          return Observable.of(null);
-        });
+          return observableOf(null);
+        }),);
       }
 
 
     }
 
     this.appsession.redirectToRoute();
-    return Observable.of(null);
+    return observableOf(null);
 
   }
 
