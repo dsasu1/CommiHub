@@ -326,6 +326,7 @@
   },
   "AboutUsPage" :{
     "AboutUs" :"<p> Devloper y fundador: Daniel Sasu. </ p> <p> CommiHub se trata de proporcionar servicios en línea para servir mejor y conectar a las comunidades. Nuestros primeros servicios se enfocan en servicios de propiedad tales como solicitudes de mantenimiento, noticias de la comunidad, revisiones y mucho más. Añadiremos más servicios a medida que pase el tiempo. </ P>"
-  }
- 
+  },
+  "EnablePushNotification" : "Habilitar notificación push",
+  "PushNoficationEnabled" : "Push Notificación habilitado"
 }

@@ -327,5 +327,7 @@
   },
   "AboutUsPage": {
     "AboutUs": "<p>Devloper and Founder: Daniel Sasu.</p><p>CommiHub is all about providing online services to better serve and connect communities. Our first services focuses on property services such as maintenance requests, community news, reviews and many more. We will be adding more services as time goes on.</p>"
-  }
+  },
+  "EnablePushNotification" : "Enable Push Notification",
+  "PushNoficationEnabled" : "Push Nofication Enabled"
 }

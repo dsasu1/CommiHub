@@ -33,6 +33,7 @@
       <div class="ui-block">
         <div class="ui-block-title">
           <h6 class="title">{{'Notifications' | translate}}</h6>
+          <button class="btn btn-primary" (click)="enablePushNotification()">{{'EnablePushNotification'| translate}}</button>
         </div>
 
          <app-notificationlist [isMainPage]="true"></app-notificationlist>

@@ -1,4 +1,5 @@
 //Global var to avoid any conflicts
+
 var CRUMINA = {};
 
 (function ($) {

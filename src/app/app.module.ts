@@ -29,6 +29,8 @@ import { ReviewService} from './review/service/review.service';
 
 //Routing
 import { AppRoutingModule } from "./app.routing.module";
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,8 @@ import { AppRoutingModule } from "./app.routing.module";
     PropertypageModule,
     ManagementModule,
     NotificationModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
