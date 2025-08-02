@@ -2,7 +2,7 @@
 import {of as observableOf,  Observable } from 'rxjs';
 
 import {map, catchError} from 'rxjs/operators';
-import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { Injectable } from '@angular/core';
 
 import { PropertyInformation } from '../model/property.model';
@@ -12,7 +12,7 @@ import { UserTypeEnum } from '../../common/AppConstants';
 
 
 @Injectable()
-export class ManagePropertyInfoResolver implements Resolve<PropertyInformation> {
+export class ManagePropertyInfoResolver  {
   constructor(private propSevice: PropertyService,  private appsession: AppsessionService) { }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<PropertyInformation> {
@@ -90,7 +90,7 @@ export class ManagePropertyInfoResolver implements Resolve<PropertyInformation> 
 
 
 @Injectable()
-export class SelectedPropertyResolver implements Resolve<PropertyInformation> {
+export class SelectedPropertyResolver  {
   constructor(private propSevice: PropertyService,  private appsession: AppsessionService) { }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<PropertyInformation> {

@@ -3,7 +3,7 @@ import {of as observableOf,  Observable } from 'rxjs';
 
 import {catchError, map} from 'rxjs/operators';
 import { Injectable } from '@angular/core';
-import { CanActivate, CanActivateChild, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { AppsessionService } from '../service/appsession.service';
 
 import { UsersService } from '../service/model.service';
@@ -11,7 +11,7 @@ import { UsersService } from '../service/model.service';
 
 
 @Injectable()
-export class UserAuthenticationGuard implements CanActivate, CanActivateChild {
+export class UserAuthenticationGuard  {
   constructor(private appsession: AppsessionService, private userService: UsersService) { }
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
     let currenUser = this.appsession.getCurrentUser();

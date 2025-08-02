@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Router, CanActivate, CanActivateChild, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { AppsessionService } from '../../../service/appsession.service';
 import { UserTypeEnum } from '../../../common/AppConstants';
 
 @Injectable()
-export class HomesGuard implements CanActivate, CanActivateChild {
+export class HomesGuard  {
   canActivateChild(childRoute: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean  {
     return this.canActivate(childRoute, state);
   }
