@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { TranslationModule } from '../common/translation/translation.module';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 
@@ -24,31 +24,24 @@ import { NotificationSharedModule} from '../notification/shared/notificationshar
 
 
 
-@NgModule({
-  imports: [
-    CommonModule, FormsModule, TranslateModule,
-    NotificationSharedModule,
-    AppmessagesModule, RouterModule,
-    TranslationModule, HttpClientModule
-  ],
-  declarations: [
-      AboutusComponent,
-      PrivacypolicyComponent,
-      CookiepolicyComponent,
-      UseragreementComponent,
-      CommunityguidelinesComponent,
-    HelpComponent, HeaderComponent, SidebarsComponent,
-    GlobalmenuComponent, 
-    LeftmenuComponent
-
-  ],
-  exports: [HeaderComponent, SidebarsComponent,
-    GlobalmenuComponent, LeftmenuComponent,
-    AppmessagesModule,
-
-    CommonModule,
-    TranslateModule, 
-    FormsModule,
-    HttpClientModule]
-})
+@NgModule({ declarations: [
+        AboutusComponent,
+        PrivacypolicyComponent,
+        CookiepolicyComponent,
+        UseragreementComponent,
+        CommunityguidelinesComponent,
+        HelpComponent, HeaderComponent, SidebarsComponent,
+        GlobalmenuComponent,
+        LeftmenuComponent
+    ],
+    exports: [HeaderComponent, SidebarsComponent,
+        GlobalmenuComponent, LeftmenuComponent,
+        AppmessagesModule,
+        CommonModule,
+        TranslateModule,
+        FormsModule,
+        HttpClientModule], imports: [CommonModule, FormsModule, TranslateModule,
+        NotificationSharedModule,
+        AppmessagesModule, RouterModule,
+        TranslationModule], providers: [provideHttpClient(withInterceptorsFromDi())] })
 export class SharedModule { }
