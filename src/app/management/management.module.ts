@@ -7,15 +7,13 @@ import { UserAuthenticationGuard } from '../service/UserAuthenticationGuard';
 import { AppmessagesModule } from '../sharedcomponents/appmessages/appmessages.module';
 import { ApppagerModule } from '../sharedcomponents/paging/apppager.module';
 import { FileuploaderModule } from '../sharedcomponents/fileupload/fileuploader.module';
-import {
-  InputTextModule,
-  InputSwitchModule,
-  MultiSelectModule,
-  ChipsModule,
-  InputMaskModule,
-  CalendarModule,
-  ToggleButtonModule
-} from 'primeng/primeng';
+import { InputTextModule } from 'primeng/inputtext';
+import { InputSwitchModule } from 'primeng/inputswitch';
+import { MultiSelectModule } from 'primeng/multiselect';
+import { ChipsModule } from 'primeng/chips';
+import { InputMaskModule } from 'primeng/inputmask';
+import { CalendarModule } from 'primeng/calendar';
+import { ToggleButtonModule } from 'primeng/togglebutton';
 import { SharedhourModule } from '../property/shared/sharedhour.module';
 import { SharedbasicformModule } from '../property/shared/sharedbasicform.module';
 import { ManagementGuard } from '../management/guards/management.guard';

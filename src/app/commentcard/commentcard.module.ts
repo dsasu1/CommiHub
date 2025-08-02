@@ -9,10 +9,8 @@ import { CommentCardGuard } from './guards/commentcard.guard';
 import { UserAuthenticationGuard } from '../service/UserAuthenticationGuard';
 import { TranslateModule } from '@ngx-translate/core';
 import { FormsModule } from '@angular/forms';
-import {
-  InputTextModule,
-  ToggleButtonModule
-} from 'primeng/primeng';
+import { InputTextModule } from 'primeng/inputtext';
+import { ToggleButtonModule } from 'primeng/togglebutton';
 
 import { AppmessagesModule } from '../sharedcomponents/appmessages/appmessages.module';
 import { ApppagerModule } from '../sharedcomponents/paging/apppager.module';

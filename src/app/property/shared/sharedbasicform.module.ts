@@ -4,9 +4,10 @@ import { FormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { AppmessagesModule } from '../../sharedcomponents/appmessages/appmessages.module';
 import { ProgressbarModule } from '../../sharedcomponents/progressbar/progressbar.module';
-import {
-  ToggleButtonModule, InputMaskModule, InputTextModule, EditorModule
-} from 'primeng/primeng';
+import { ToggleButtonModule } from 'primeng/togglebutton';
+import { InputMaskModule } from 'primeng/inputmask';
+import { InputTextModule } from 'primeng/inputtext';
+import { EditorModule } from 'primeng/editor';
 
 
 import { BasicpropertyformComponent } from '../form/basicpropertyform.component';

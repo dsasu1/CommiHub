@@ -1,7 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ErrorMessage } from '../../model/utility.model';
-import { SelectItem } from 'primeng/components/common/api';
-import { Message } from 'primeng/components/common/api';
 
 @Component({
   selector: 'app-errormessage',
@@ -12,7 +10,7 @@ export class ErrormessageComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    
+
   }
-  
+
 }

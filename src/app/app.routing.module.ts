@@ -26,10 +26,10 @@ const routes: Routes = [
     { path: "communityguide", component: CommunityguidelinesComponent },
     { path: "help", component: HelpComponent ,canActivate: [UserAuthenticationGuard]},
 
-    {path:'commentcard', loadChildren:'app/commentcard/commentcard.module#CommentcardModule'},
-    {path:'newsfeed', loadChildren:'app/news/news.module#NewsModule'},
-    {path:'servicerequest', loadChildren:'app/servicerequest/servicerequest.module#ServicerequestModule'},
-    {path:'reviews', loadChildren:'app/review/review.module#ReviewModule'},
+    {path:'commentcard', loadChildren:() => import('app/commentcard/commentcard.module').then(m => m.CommentcardModule)},
+    {path:'newsfeed', loadChildren:() => import('app/news/news.module').then(m => m.NewsModule)},
+    {path:'servicerequest', loadChildren:() => import('app/servicerequest/servicerequest.module').then(m => m.ServicerequestModule)},
+    {path:'reviews', loadChildren:() => import('app/review/review.module').then(m => m.ReviewModule)},
 
       // otherwise redirect to home
     { path: '**', redirectTo: 'home' }

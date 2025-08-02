@@ -1,16 +1,15 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { MessagesModule } from 'primeng/messages';
+import { ToastModule } from 'primeng/toast';
 import { ErrormessageComponent } from './errormessage.component';
-import {
-  MessagesModule, GrowlModule
-} from 'primeng/primeng';
 
 
 @NgModule({
   imports: [
     CommonModule,
     MessagesModule,
-    GrowlModule
+    ToastModule
   ],
   declarations: [ErrormessageComponent],
   exports: [ErrormessageComponent]

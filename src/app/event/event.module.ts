@@ -5,9 +5,7 @@ import { UserAuthenticationGuard } from '../service/UserAuthenticationGuard';
 import { SharedModule } from '../sharedcomponents/shared.module';
 import { CalendareventComponent } from './calendarevent.component';
 import { EventsService } from './service/event.service';
-import {
-  ScheduleModule
-} from 'primeng/primeng';
+import { ScheduleModule } from 'primeng/schedule';
 
 
 const routes: Routes = [

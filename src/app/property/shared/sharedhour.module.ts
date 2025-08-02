@@ -5,9 +5,8 @@ import { FormsModule } from '@angular/forms';
 import { HoursoperationComponent } from '../form/hoursoperation.component';
 import { AppmessagesModule } from '../../sharedcomponents/appmessages/appmessages.module';
 import { ProgressbarModule } from '../../sharedcomponents/progressbar/progressbar.module';
-import {
-  ToggleButtonModule, InputMaskModule
-} from 'primeng/primeng';
+import { ToggleButtonModule } from 'primeng/togglebutton';
+import { InputMaskModule } from 'primeng/inputmask';
 
 @NgModule({
   imports: [
