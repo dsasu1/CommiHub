@@ -9,7 +9,7 @@ import { ToggleButtonModule } from 'primeng/togglebutton';
 
 import { AppmessagesModule } from '../sharedcomponents/appmessages/appmessages.module';
 import { ProgressbarModule } from '../sharedcomponents/progressbar/progressbar.module';
-import { RecaptchaModule } from '../sharedcomponents/recaptcha/recaptcha.module';
+
 
 import { AccountconfirmComponent } from '../home/account/accountconfirm.component';
 import { ForgotaccountComponent } from '../home/account/form/forgotaccount.component';
@@ -32,7 +32,7 @@ const routes: Routes = [
     CommonModule,
     TranslateModule,
     AppmessagesModule,
-    RecaptchaModule,
+
     FormsModule,
     ProgressbarModule,
     PasswordModule, InputTextModule,
