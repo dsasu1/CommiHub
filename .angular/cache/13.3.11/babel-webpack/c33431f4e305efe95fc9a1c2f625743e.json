@@ -1,1 +1,0 @@
-{"ast":null,"code":"export class ReviewMod {\n  constructor() {\n    this.overallRating = 1;\n    this.staffRating = 1;\n    this.noiseRating = 1;\n    this.maintenanceRating = 1;\n    this.neighborRating = 1;\n    this.safetyRating = 1;\n    this.groundsRating = 1;\n  }\n\n}","map":null,"metadata":{},"sourceType":"module"}
