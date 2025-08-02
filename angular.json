@@ -150,7 +150,6 @@
       }
     }
   },
-  "defaultProject": "CommiHub",
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "app",
