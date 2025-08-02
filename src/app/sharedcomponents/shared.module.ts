@@ -6,7 +6,6 @@ import { TranslationModule } from '../common/translation/translation.module';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
-
 import { AboutusComponent } from './company/aboutus.component';
 import { PrivacypolicyComponent } from './company/privacypolicy.component';
 import { CookiepolicyComponent } from './company/cookiepolicy.component';
@@ -20,28 +19,41 @@ import { GlobalmenuComponent } from './menus/globalmenu.component';
 import { LeftmenuComponent } from './menus/leftmenu.component';
 import { NotificationSharedModule} from '../notification/shared/notificationshared.module';
 
-
-
-
-
-@NgModule({ declarations: [
+@NgModule({ 
+    declarations: [
         AboutusComponent,
         PrivacypolicyComponent,
         CookiepolicyComponent,
         UseragreementComponent,
         CommunityguidelinesComponent,
-        HelpComponent, HeaderComponent, SidebarsComponent,
+        HelpComponent, 
+        HeaderComponent, 
+        SidebarsComponent,
         GlobalmenuComponent,
         LeftmenuComponent
     ],
-    exports: [HeaderComponent, SidebarsComponent,
-        GlobalmenuComponent, LeftmenuComponent,
+    exports: [
+        HeaderComponent, 
+        SidebarsComponent,
+        GlobalmenuComponent, 
+        LeftmenuComponent,
         AppmessagesModule,
         CommonModule,
         TranslateModule,
         FormsModule,
-        HttpClientModule], imports: [CommonModule, FormsModule, TranslateModule,
+        RouterModule
+    ], 
+    imports: [
+        CommonModule, 
+        FormsModule, 
+        TranslateModule,
         NotificationSharedModule,
-        AppmessagesModule, RouterModule,
-        TranslationModule], providers: [provideHttpClient(withInterceptorsFromDi())] })
+        AppmessagesModule, 
+        RouterModule,
+        TranslationModule
+    ], 
+    providers: [
+        provideHttpClient(withInterceptorsFromDi())
+    ] 
+})
 export class SharedModule { }
