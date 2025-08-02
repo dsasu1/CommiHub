@@ -38,9 +38,8 @@
 // import 'classlist.js';  // Run `npm install --save classlist.js`.
 
 /** Evergreen browsers require these. **/
-import 'core-js/client/shim';
-import 'core-js/es6/reflect';
-import 'core-js/es7/reflect';
+// Updated for core-js v3 compatibility
+import 'core-js/es/reflect';
 
 
 /**
@@ -54,7 +53,7 @@ import 'core-js/es7/reflect';
 /***************************************************************************************************
  * Zone JS is required by Angular itself.
  */
-import 'zone.js/dist/zone';  // Included with Angular CLI.
+import 'zone.js/dist/zone'; // Included with Angular CLI.
 
 
 
