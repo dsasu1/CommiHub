@@ -51,12 +51,12 @@ export class ManagePropertyInfoResolver  {
 
                 this.appsession.editItem = prop[0];
                 this.appsession.setSelectedProperty(prop[0]);
-                return info;
+                return prop[0];
               }
               else if (info != null && currentUser.managementId == prop[0].managementUserId) {
                 this.appsession.editItem = prop[0];
                 this.appsession.setSelectedProperty(prop[0]);
-                return info;
+                return prop[0];
               }
             }
             this.appsession.redirectToRoute(currentUser.noPropertyRedirectPage);

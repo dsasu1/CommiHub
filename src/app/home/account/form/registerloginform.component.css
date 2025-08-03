@@ -1,0 +1,385 @@
+/* Modern Material Design Authentication Form Styles */
+
+.auth-container {
+    display: flex;
+    min-height: 100vh;
+
+}
+
+.auth-card {
+    width: 100%;
+    max-width: 480px;
+    border-radius: 16px !important;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1) !important;
+    overflow: hidden;
+    background: white;
+    animation: slideInUp 0.6s ease-out;
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.auth-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 32px 24px 24px;
+    text-align: center;
+    margin: 0;
+}
+
+.auth-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    font-size: 28px;
+    font-weight: 600;
+    margin: 0;
+    color: white;
+}
+
+.auth-icon {
+    font-size: 32px;
+    width: 32px;
+    height: 32px;
+}
+
+.auth-subtitle {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 16px;
+    margin: 8px 0 0 0;
+}
+
+.auth-content {
+    padding: 0;
+}
+
+.auth-tabs {
+    width: 100%;
+}
+
+.auth-tabs ::ng-deep .mat-tab-header {
+    background: #f8f9fa;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.auth-tabs ::ng-deep .mat-tab-label {
+    min-width: 0;
+    padding: 16px 24px;
+    font-weight: 500;
+    color: #6c757d;
+}
+
+.auth-tabs ::ng-deep .mat-tab-label.mat-tab-label-active {
+    color: #667eea;
+}
+
+.auth-tabs ::ng-deep .mat-ink-bar {
+    background-color: #667eea;
+    height: 3px;
+}
+
+.tab-content {
+    padding: 32px 24px;
+}
+
+.form-section {
+    max-width: 100%;
+}
+
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 20px;
+    font-weight: 600;
+    color: #2c3e50;
+    margin: 0 0 24px 0;
+}
+
+.section-icon {
+    color: #667eea;
+    font-size: 24px;
+    width: 24px;
+    height: 24px;
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.error-section {
+    margin-bottom: 16px;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.name-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+@media (max-width: 600px) {
+    .name-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+.name-field {
+    width: 100%;
+}
+
+.password-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+@media (max-width: 600px) {
+    .password-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+.password-field {
+    width: 100%;
+}
+
+/* Material Form Field Customization */
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+    color: #e9ecef;
+}
+
+::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+    color: #667eea;
+}
+
+::ng-deep .mat-form-field-label {
+    color: #6c757d;
+}
+
+::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
+    color: #667eea;
+}
+
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-infix {
+    padding: 12px 0;
+}
+
+/* Terms and Conditions Section */
+.terms-section {
+    margin: 16px 0;
+    padding: 16px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
+}
+
+.terms-toggle {
+    width: 100%;
+}
+
+.terms-text {
+    font-size: 14px;
+    color: #6c757d;
+    line-height: 1.5;
+}
+
+.terms-link {
+    color: #667eea;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.terms-link:hover {
+    text-decoration: underline;
+}
+
+/* Submit Button */
+.submit-btn {
+    height: 48px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 16px 0;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(102, 126, 234, 0.3);
+}
+
+.submit-btn:disabled {
+    transform: none;
+    box-shadow: none;
+}
+
+.btn-spinner {
+    margin-left: 8px;
+}
+
+/* Login Options */
+.login-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 16px 0;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.remember-toggle {
+    font-size: 14px;
+    color: #6c757d;
+}
+
+.forgot-link {
+    color: #667eea;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.forgot-link:hover {
+    text-decoration: underline;
+}
+
+/* Auth Links */
+.auth-link {
+    text-align: center;
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 1px solid #e9ecef;
+    color: #6c757d;
+    font-size: 14px;
+}
+
+.link-text {
+    color: #667eea;
+    text-decoration: none;
+    font-weight: 500;
+    cursor: pointer;
+    margin-left: 4px;
+}
+
+.link-text:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    .auth-container {
+        padding: 16px;
+    }
+
+    .auth-card {
+        border-radius: 12px !important;
+    }
+
+    .auth-header {
+        padding: 24px 16px 16px;
+    }
+
+    .auth-title {
+        font-size: 24px;
+    }
+
+    .tab-content {
+        padding: 24px 16px;
+    }
+
+    .login-options {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+/* Loading States */
+.submit-btn:disabled {
+    opacity: 0.7;
+}
+
+/* Focus States */
+::ng-deep .mat-form-field.mat-focused .mat-form-field-ripple {
+    background-color: #667eea;
+}
+
+/* Animation for form fields */
+::ng-deep .mat-form-field {
+    transition: all 0.3s ease;
+}
+
+::ng-deep .mat-form-field:hover {
+    transform: translateY(-1px);
+}
+
+/* Custom scrollbar for tabs */
+.auth-tabs ::ng-deep .mat-tab-header-pagination {
+    display: none;
+}
+
+/* Smooth transitions */
+* {
+    transition: all 0.3s ease;
+}
+
+/* Material Icons Fix */
+.mat-icon {
+    font-family: 'Material Icons' !important;
+    font-weight: normal !important;
+    font-style: normal !important;
+    font-size: 24px !important;
+    line-height: 1 !important;
+    letter-spacing: normal !important;
+    text-transform: none !important;
+    display: inline-block !important;
+    white-space: nowrap !important;
+    word-wrap: normal !important;
+    direction: ltr !important;
+    -webkit-font-feature-settings: 'liga' !important;
+    -webkit-font-smoothing: antialiased !important;
+}
+
+/* Ensure icons in buttons display properly */
+.submit-btn .mat-icon {
+    font-size: 20px !important;
+    margin-right: 8px;
+}
+
+/* Ensure icons in form fields display properly */
+.mat-form-field .mat-icon {
+    font-size: 20px !important;
+}
+
+/* Section icons */
+.section-icon {
+    font-size: 24px !important;
+    width: 24px !important;
+    height: 24px !important;
+}
+
+/* Auth header icon */
+.auth-icon {
+    font-size: 32px !important;
+    width: 32px !important;
+    height: 32px !important;
+}

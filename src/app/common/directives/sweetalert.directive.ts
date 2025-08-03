@@ -1,5 +1,5 @@
-import { Directive, ElementRef, HostListener , Output, EventEmitter} from '@angular/core';
-import swal from 'sweetalert2';
+import { Directive, EventEmitter, HostListener, Output } from '@angular/core';
+import Swal from 'sweetalert2';
 import { AppsessionService } from '../../service/appsession.service';
 
 @Directive({
@@ -12,19 +12,19 @@ export class PSSweetAlertDirective {
   }
 
   @HostListener("click") onClick() {
-    swal({
-      type: 'question',
-      title: this.appsession.getTranslated("AreYouSure"), 
+    Swal.fire({
+      icon: 'question',
+      title: this.appsession.getTranslated("AreYouSure"),
       text: this.appsession.getTranslated("YouWillNotRecover"),
-      showCancelButton: true,    
-      confirmButtonClass: 'btn btn-blue',
-      cancelButtonClass: 'btn btn-secondary',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#6c757d',
       confirmButtonText: this.appsession.getTranslated("Yes"),
       cancelButtonText: this.appsession.getTranslated("No")
     }).then((result) => {
-      if (result.value) {
+      if (result.isConfirmed) {
         this.onConfirm.emit(true);
-      }    
+      }
     });
   }
 }

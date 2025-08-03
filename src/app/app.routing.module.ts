@@ -1,39 +1,33 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from "@angular/router";
-import { HomeModule } from './home/home.module';
-
+import { RouterModule, Routes } from "@angular/router";
 
 import { AboutusComponent } from './sharedcomponents/company/aboutus.component';
-import { PrivacypolicyComponent } from './sharedcomponents/company/privacypolicy.component';
-import { CookiepolicyComponent } from './sharedcomponents/company/cookiepolicy.component';
-import { UseragreementComponent } from './sharedcomponents/company/useragreement.component';
 import { CommunityguidelinesComponent } from './sharedcomponents/company/communityguidelines.component';
+import { CookiepolicyComponent } from './sharedcomponents/company/cookiepolicy.component';
 import { HelpComponent } from './sharedcomponents/company/help.component';
-
+import { PrivacypolicyComponent } from './sharedcomponents/company/privacypolicy.component';
+import { UseragreementComponent } from './sharedcomponents/company/useragreement.component';
 
 import { UserAuthenticationGuard } from './service/UserAuthenticationGuard';
 
-
 const routes: Routes = [
-     
-    
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: "aboutus", component: AboutusComponent, canActivate: [UserAuthenticationGuard] },
+  { path: "privacypolicy", component: PrivacypolicyComponent, canActivate: [UserAuthenticationGuard] },
+  { path: "cookiepolicy", component: CookiepolicyComponent },
+  { path: "useragreement", component: UseragreementComponent, canActivate: [UserAuthenticationGuard] },
+  { path: "communityguide", component: CommunityguidelinesComponent },
+  { path: "help", component: HelpComponent, canActivate: [UserAuthenticationGuard] },
 
-     { path: '', redirectTo: 'home', pathMatch: 'full' },
-     { path: "aboutus", component: AboutusComponent, canActivate: [UserAuthenticationGuard]  },
-     { path: "privacypolicy", component: PrivacypolicyComponent , canActivate: [UserAuthenticationGuard]},
-    { path: "cookiepolicy", component: CookiepolicyComponent },
-    { path: "useragreement", component: UseragreementComponent, canActivate: [UserAuthenticationGuard] },
-    { path: "communityguide", component: CommunityguidelinesComponent },
-    { path: "help", component: HelpComponent ,canActivate: [UserAuthenticationGuard]},
+  { path: 'home', loadChildren: () => import('./home/home.module').then(m => m.HomeModule) },
+  { path: 'commentcard', loadChildren: () => import('./commentcard/commentcard.module').then(m => m.CommentcardModule) },
+  { path: 'newsfeed', loadChildren: () => import('./news/news.module').then(m => m.NewsModule) },
+  { path: 'servicerequest', loadChildren: () => import('./servicerequest/servicerequest.module').then(m => m.ServicerequestModule) },
+  { path: 'reviews', loadChildren: () => import('./review/review.module').then(m => m.ReviewModule) },
 
-    {path:'commentcard', loadChildren:() => import('app/commentcard/commentcard.module').then(m => m.CommentcardModule)},
-    {path:'newsfeed', loadChildren:() => import('app/news/news.module').then(m => m.NewsModule)},
-    {path:'servicerequest', loadChildren:() => import('app/servicerequest/servicerequest.module').then(m => m.ServicerequestModule)},
-    {path:'reviews', loadChildren:() => import('app/review/review.module').then(m => m.ReviewModule)},
-
-      // otherwise redirect to home
-    { path: '**', redirectTo: 'home' }
-]
+  // otherwise redirect to home
+  { path: '**', redirectTo: 'home' }
+];
 
 @NgModule({
   imports: [
@@ -41,6 +35,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class AppRoutingModule {
-
-}
+export class AppRoutingModule { }

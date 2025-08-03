@@ -8,6 +8,7 @@ import { PasswordModule } from 'primeng/password';
 import { ToggleButtonModule } from 'primeng/togglebutton';
 
 import { AppmessagesModule } from '../sharedcomponents/appmessages/appmessages.module';
+import { MaterialModule } from '../sharedcomponents/material/material.module';
 import { ProgressbarModule } from '../sharedcomponents/progressbar/progressbar.module';
 
 
@@ -20,11 +21,11 @@ import { HomelandingcontentComponent } from '../home/content/homelandingcontent.
 import { LandinghomeComponent } from '../home/content/landinghome.component';
 
 const routes: Routes = [
+  { path: "", component: LandinghomeComponent },
   { path: "newpassword/:id", component: NewpasswordComponent },
   { path: "accountconfirm/:id", component: AccountconfirmComponent },
   { path: "forgotaccount", component: ForgotaccountComponent },
-  { path: "registersuccess", component: RegistersuccessComponent },
-  { path: "home", component: LandinghomeComponent }
+  { path: "registersuccess", component: RegistersuccessComponent }
 ]
 
 @NgModule({
@@ -32,7 +33,7 @@ const routes: Routes = [
     CommonModule,
     TranslateModule,
     AppmessagesModule,
-
+    MaterialModule,
     FormsModule,
     ProgressbarModule,
     PasswordModule, InputTextModule,
