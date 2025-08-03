@@ -1,127 +1,96 @@
-<!-- Header -->
-
-<header class="header" id="site-header">
-  <div class="page-title">
-    <h6>{{title | translate}}</h6>
-  </div>
-
-  <div class="header-content-wrapper">
-    <!--<form class="search-bar w-search notification-list friend-requests">
-      <div class="form-group with-button">
-        <input class="form-control" placeholder="{{ 'SearchProperty' | translate}}" type="search">
-        <button>
-          <i class="fa fa-2x fa-search"></i>
-        </button>
+<!-- Modern Material Design Header -->
+<header class="modern-header" id="site-header">
+  <div class="header-container">
+    <!-- Page Title Section -->
+    <div class="header-title-section">
+      <div class="page-title">
+        <h5 class="title-text">{{title | translate}}</h5>
       </div>
-    </form>
+    </div>
 
-    <a href="#" class="link-find-friend">{{'Search' | translate}}</a>-->
+    <!-- Header Controls Section -->
+    <div class="header-controls">
+      <!-- Notification Bell -->
+      <div class="control-item notification-control" *ngIf="isLoggedIn">
+        <div class="notification-wrapper">
+          <i [ngClass]="{'notification-icon': true, 'has-notifications': unseenNotificationCount > 0}">notifications</i>
+          <span class="notification-badge" *ngIf="unseenNotificationCount > 0">
+            {{unseenNotificationCount}}
+          </span>
+        </div>
 
-    <div class="control-block">
-
-      <div class="control-icon more has-items" *ngIf="isLoggedIn">
-        <i [ngClass]="{'fa fa-2x fa-bell': true, 'orangeColor': unseenNotificationCount > 0}"></i>
-
-        <div class="label-avatar bg-primary" [hidden]="unseenNotificationCount < 1">{{unseenNotificationCount}}</div>
-
-        <div class="more-dropdown more-with-triangle triangle-top-center">
-
-
-          <div class="mCustomScrollbar" data-mcs-theme="dark">
+        <div class="notification-dropdown">
+          <div class="dropdown-header">
+            <h6 class="dropdown-title">{{'Notifications' | translate}}</h6>
+          </div>
+          <div class="dropdown-content">
             <app-notificationlist></app-notificationlist>
           </div>
-
-          <a routerLink="/notification" class="view-all bg-primary">{{'ViewAll' | translate}}</a>
+          <div class="dropdown-footer">
+            <a routerLink="/notification" class="view-all-link">{{'ViewAll' | translate}}</a>
+          </div>
         </div>
       </div>
 
-      <div class="author-page author vcard inline-items more" *ngIf="isLoggedIn">
-        <div class="author-thumb">
-          <img alt="author" [src]="GetImageUrl()" onerror="this.src = '../../../assets/img/avatar1.jpg'" style="max-height:36px;" class="avatar">
-          <span class="icon-status online"></span>
-          <div class="more-dropdown more-with-triangle">
-            <div class="mCustomScrollbar" data-mcs-theme="dark">
+      <!-- User Profile Section -->
+      <div class="control-item user-profile" *ngIf="isLoggedIn">
+        <div class="user-wrapper">
+          <div class="user-avatar">
+            <img [src]="GetImageUrl()" (error)="$event.target.src = '../../../assets/img/avatar1.jpg'" alt="User Avatar"
+              class="avatar-img">
+            <div class="online-indicator"></div>
+          </div>
+          <span class="user-name">{{currentUser?.userVM?.firstName}}</span>
+          <i class="dropdown-icon">keyboard_arrow_down</i>
+        </div>
 
-              <app-globalmenu></app-globalmenu>
-            </div>
-
+        <div class="user-dropdown">
+          <div class="dropdown-content">
+            <app-globalmenu></app-globalmenu>
           </div>
         </div>
-        <a href="#" class="author-name fn">
-          <div class="author-title">
-            {{currentUser?.userVM?.firstName}} <i class="fa fa-angle-down"></i>
-          </div>
-        </a>
       </div>
-      <div class="author-page author vcard inline-items more" *ngIf="!isLoggedIn">
-        <div class="author-thumb">
-          <i class="fa fa-2x fa-user"></i>
-          <div class="more-dropdown more-with-triangle">
-            <div class="mCustomScrollbar" data-mcs-theme="dark">
 
-              <app-globalmenu></app-globalmenu>
-            </div>
+      <!-- Guest User Section -->
+      <div class="control-item guest-profile" *ngIf="!isLoggedIn">
+        <div class="guest-wrapper">
+          <div class="guest-avatar">
+            <i class="guest-icon">person</i>
+          </div>
+          <span class="guest-name">{{'Guest' | translate}}</span>
+          <i class="dropdown-icon">keyboard_arrow_down</i>
+        </div>
 
+        <div class="guest-dropdown">
+          <div class="dropdown-content">
+            <app-globalmenu></app-globalmenu>
           </div>
         </div>
-        <a class="author-name fn">
-          <div class="author-title">
-            {{'Guest' | translate}} <i class="fa fa-angle-down"></i>
-          </div>
-        </a>
       </div>
-
     </div>
   </div>
-
 </header>
-<app-errormessage [appMsg]="headerInfoMessage"></app-errormessage>
-<!-- ... end Header -->
-<!-- Responsive Header -->
 
-<header class="header header-responsive" id="site-header-responsive">
-
-  <div class="header-content-wrapper">
-    <ul class="nav nav-tabs mobile-app-tabs" role="tablist">
-    
-      <li class="nav-item" *ngIf="isLoggedIn" (click)="routeToNotification()">
-          <div class="control-icon">
-            <i [ngClass]="{'fa fa-2x fa-bell': true, 'orangeColor': unseenNotificationCount > 0}"></i>
-            <div class="label-avatar bg-primary" [hidden]="unseenNotificationCount < 1">{{unseenNotificationCount}}</div>
-          </div>
-     
-      </li>
-
-      <!--<li class="nav-item">
-        <a class="nav-link" data-toggle="tab" href="#search" role="tab">
-          <svg class="olymp-magnifying-glass-icon"><use xlink:href="../../../assets/icons/icons.svg#olymp-magnifying-glass-icon"></use></svg>
-          <svg class="olymp-close-icon"><use xlink:href="../../../assets/icons/icons.svg#olymp-close-icon"></use></svg>
-        </a>
-      </li>-->
-    </ul>
-  </div>
-
-  <!-- Tab panes -->
-  <div class="tab-content tab-content-responsive">
-
-    <!--<div class="tab-pane " id="search" role="tabpanel">
-
-
-      <form class="search-bar w-search notification-list friend-requests">
-        <div class="form-group with-button">
-          <input class="form-control" placeholder="{{ 'SearchProperty' | translate}}" type="text">
+<!-- Mobile Responsive Header -->
+<header class="modern-header mobile-header" id="site-header-responsive">
+  <div class="header-container">
+    <div class="mobile-controls">
+      <!-- Mobile Notification Bell -->
+      <div class="mobile-control-item" *ngIf="isLoggedIn" (click)="routeToNotification()">
+        <div class="mobile-notification-wrapper">
+          <i
+            [ngClass]="{'mobile-notification-icon': true, 'has-notifications': unseenNotificationCount > 0}">notifications</i>
+          <span class="mobile-notification-badge" *ngIf="unseenNotificationCount > 0">
+            {{unseenNotificationCount}}
+          </span>
         </div>
-      </form>
-
-
-    </div>-->
-
+      </div>
+    </div>
   </div>
-  <!-- ... end  Tab panes -->
-
 </header>
 
-<!-- ... end Responsive Header -->
+<!-- Error Messages -->
+<app-errormessage [appMsg]="headerInfoMessage"></app-errormessage>
 
+<!-- Header Spacer -->
 <div class="header-spacer"></div>
-
